@@ -18,7 +18,7 @@
 			.code-block { margin-top: 48px; margin-bottom: 24px; padding: 24px; background-color: #EEE; border-radius: 3px; overflow: scroll; }
 			.code-block pre { margin: 0; }
 			.wrapper { margin-top: 48px; }
-			p.explainer { margin-bottom: 48px; }
+			.explainer { margin-bottom: 48px; }
 			input { outline: none; width: 250px; box-sizing: border-box; border: none; border-bottom: 2px solid rgba(0,0,0,0.10); padding: 4px 8px; margin-bottom: 8px; transition: border-bottom .2s ease; }
 			input.spaced-input { margin-right: 16px; }
 			input.account-input { width: 400px; margin-bottom: 16px; }
@@ -33,11 +33,14 @@
 			<div class="container">
 				<div class="wrapper">
 					<h1>Wistia Thumbnail URL Getter</h1>
-					<p class="explainer">Enter your Wistia account URL, the ID from the video you want, and the width and height you want it!</p>
-					<!-- FOLLOW BUTTON -->
-					<a class="github-button" href="https://github.com/mirshko" data-style="mega" data-count-href="/mirshko/followers" data-count-api="/users/mirshko#followers" data-count-aria-label="# followers on GitHub" aria-label="Follow @mirshko on GitHub">Follow @mirshko</a>
-					<!-- STAR BUTTON -->
-					<a class="github-button" href="https://github.com/mirshko/Wistia-Thumbnail-URL-Getter" data-icon="octicon-star" data-style="mega" data-count-href="/mirshko/Wistia-Thumbnail-URL-Getter/stargazers" data-count-api="/repos/mirshko/Wistia-Thumbnail-URL-Getter#stargazers_count" data-count-aria-label="# stargazers on GitHub" aria-label="Star mirshko/Wistia-Thumbnail-URL-Getter on GitHub">Star</a>
+					<div class="explainer">
+						<p>Enter your Wistia account URL, the ID from the video you want, and the width and height you want it!</p>
+						<!-- FOLLOW BUTTON -->
+						<a class="github-button" href="https://github.com/mirshko" data-style="mega" data-count-href="/mirshko/followers" data-count-api="/users/mirshko#followers" data-count-aria-label="# followers on GitHub" aria-label="Follow @mirshko on GitHub">Follow @mirshko</a>
+						<!-- STAR BUTTON -->
+						<a class="github-button" href="https://github.com/mirshko/Wistia-Thumbnail-URL-Getter" data-icon="octicon-star" data-style="mega" data-count-href="/mirshko/Wistia-Thumbnail-URL-Getter/stargazers" data-count-api="/repos/mirshko/Wistia-Thumbnail-URL-Getter#stargazers_count" data-count-aria-label="# stargazers on GitHub" aria-label="Star mirshko/Wistia-Thumbnail-URL-Getter on GitHub">Star</a>
+					</div>
+					<!-- INPUT -->
 					<form class="field" action="index.html" method="post">
 						<input class="account-input spaced-input" id="wistiaAccountURL" type="url" name="wistiaAccountURL" placeholder="Enter Wistia Account URL">
 						<br>
