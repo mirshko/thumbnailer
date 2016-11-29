@@ -1,4 +1,4 @@
-# Wistia Thumbnail URL Getter
+# Wistia Thumbnail URL Generator
 
 ### Details
 
