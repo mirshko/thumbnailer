@@ -15,16 +15,6 @@
 		"oAP": "\/index.html",
 		"oF": 0
 		},
-	"\/master-min.css": {
-		"aP": 0,
-		"bl": 0,
-		"ft": 16,
-		"ma": 0,
-		"oA": 2,
-		"oAP": "\/master-min-min.css",
-		"oF": 0,
-		"oS": 0
-		},
 	"\/master.css": {
 		"aP": 0,
 		"bl": 0,
@@ -62,6 +52,14 @@
 		"pME": 1,
 		"rFN": 0,
 		"uCM": 0
+		},
+	"\/seo_thumb.png": {
+		"ft": 32768,
+		"iS": 782966,
+		"oA": 0,
+		"oAP": "\/seo_thumb.png",
+		"oF": 0,
+		"opt": 0
 		}
 	},
 "hooks": [
