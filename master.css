@@ -1,0 +1,120 @@
+html, input, button, pre {
+    color: rgba(0, 0, 0, 0.87);
+}
+
+@media only screen and (min-width: 0) {
+    html {
+        font-size: 15px;
+    }
+}
+
+@media only screen and (min-width: 1075px) {
+    html {
+        font-size: 15.5px;
+    }
+}
+
+@media only screen and (min-width: 1200px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+.container {
+    margin: 0 auto;
+    max-width: 1360px;
+    width: 90%;
+}
+
+@media only screen and (min-width: 601px) {
+    .container {
+        width: 85%;
+    }
+}
+
+@media only screen and (min-width: 1076px) {
+    .container {
+        width: 72.5%;
+    }
+}
+
+@media only screen and (min-width: 1076px) and (max-width: 1440px) {
+    .container {
+        width: 85%;
+    }
+}
+
+.code-block {
+    margin-top: 48px;
+    margin-bottom: 24px;
+    padding: 24px;
+    background-color: #EEE;
+    border-radius: 3px;
+    overflow: scroll;
+}
+
+.code-block pre {
+    margin: 0;
+}
+
+.wrapper {
+    margin-top: 48px;
+}
+
+.explainer {
+    margin-bottom: 48px;
+}
+
+input {
+    outline: none;
+    width: 250px;
+    box-sizing: border-box;
+    border: none;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.10);
+    padding: 4px 8px;
+    margin-bottom: 8px;
+    transition: border-bottom .2s ease;
+}
+
+input.spaced-input {
+    margin-right: 16px;
+}
+
+input.account-input {
+    width: 400px;
+    margin-bottom: 16px;
+}
+
+button {
+    border-radius: 3px;
+    background-color: #DDD;
+    border: none;
+    padding: 8px 16px;
+    margin-top: 16px;
+}
+
+button:disabled {
+    background-color: #EEE;
+    color: rgba(0, 0, 0, 0.38);
+}
+
+@media only screen and (max-width: 1076px) {
+    input {
+        width: 100%;
+        max-width: 400px;
+        margin-bottom: 16px;
+    }
+}
+
+input:invalid {
+    border-bottom: 2px solid rgba(255, 0, 0, 0.76);
+}
+
+input:active, input:focus {
+    border-bottom: 2px solid rgba(0, 0, 0, 0.57);
+}
+
+.responsive-img {
+    max-width: 100%;
+    height: auto;
+}
