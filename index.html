@@ -19,8 +19,8 @@
 		<link rel="stylesheet" href="normalize.css">
 		<link rel="stylesheet" href="master.css">
 		<!-- JS -->
-		<script async defer src="https://buttons.github.io/buttons.js"></script>
 		<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+		<script async defer src="https://buttons.github.io/buttons.js"></script>
 	</head>
 	<body>
 		<main>
@@ -28,7 +28,13 @@
 				<div class="wrapper">
 					<h1>Wistia Thumbnail URL Generator</h1>
 					<div class="explainer">
-						<p>Enter your Wistia account URL, the ID from the video you want, and the width and height you want it!</p>
+						<div class="explainer-text">
+							<ol>
+								<li>Enter your Wistia subdomain <span>(<strong>company</strong>.wistia.com)</span></li>
+								<li>The ID from the video you want <span>(...wistia.com/medias/<strong>12345abdce</strong>)</span></li>
+								<li>Then finally, the <span><strong>width</strong></span> and <span><strong>height</strong></span> for the desired thumbnail</li>
+							</ol>
+						</div>
 						<!-- FOLLOW BUTTON -->
 						<a class="github-button" href="https://github.com/mirshko" data-style="mega" data-count-href="/mirshko/followers" data-count-api="/users/mirshko#followers" data-count-aria-label="# followers on GitHub" aria-label="Follow @mirshko on GitHub">Follow @mirshko</a>
 						<!-- STAR BUTTON -->
@@ -36,7 +42,7 @@
 					</div>
 					<!-- INPUT -->
 					<form class="field" action="index.html" method="post">
-						<input class="account-input spaced-input" id="wistiaAccountURL" type="url" name="wistiaAccountURL" placeholder="Enter Wistia Account URL">
+						<input class="account-input spaced-input" id="wistiaSubdomain" type="text" name="wistiaSubdomain" placeholder="Enter Wistia Subdomain">
 						<br>
 						<input class="spaced-input" id="wistiaID" type="text" name="wistiaID" placeholder="Enter Wistia ID">
 						<input class="spaced-input" id="wistiaThumbWidth" type="number" name="wistiaThumbWidth" placeholder="Enter Width">
@@ -48,11 +54,12 @@
 					<div class="code-block">
 						<pre><span id="thumbURL">Thumbnail URL</span></pre>
 					</div>
-					<img id="thumbPreview" class="responsive-img" src="https://placehold.it/320x180">
+					<a id="downloadThumb" download><img id="thumbPreview" alt="Click Me To Download!" class="responsive-img hide"></a>
 				</div>
 			</div>
 		</main>
 		<script type="text/javascript">
+			// DISABLE BUTTTON WHEN NO INPUT
 			$(document).ready(function(){
 				$('input').keyup(function() {
 					var empty = false;
@@ -66,16 +73,21 @@
 						$('#getThumb').attr('disabled', false);
 				});
 			});
+			// NEEDED DUE TO SAVING SOME INPUT
+			var subdomain;
+			// SET BUTTON LISTENER
 			document.getElementById("getThumb").addEventListener("click", getThumbnail);
 			function getThumbnail() {
-				// GET VALUES FROM INPUT FIELDS
+				// GET / SET VALUES FROM INPUT FIELDS
 				var mediaHashedId = $('#wistiaID').val();
 				var width = $('#wistiaThumbWidth').val();
 				var height = $('#wistiaThumbHeight').val();
+				subdomain = $('#wistiaSubdomain').val();
 				// BUILD CALL TO WISTIA
 				var baseUrl = "https://fast.wistia.com/oembed/?url=";
-				var accountUrl = escape($('#wistiaAccountURL').val().replace('/projects', ''));
-				console.log(accountUrl);
+				// var accountUrl = escape($('#wistiaSubdomain').val().replace('/projects', ''));
+				var accountUrl = escape("http://" + subdomain + ".wistia.com");
+				// console.log(accountUrl);
 				function getThumbnailUrl(hashedId, callback) {
 					$.getJSON(baseUrl + accountUrl + '/medias/' + mediaHashedId + "&format=json&callback=?", callback);
 				}
@@ -85,9 +97,19 @@
 					// DISPLAY IMAGE THUMBNAIL
 					$('#thumbURL').text(thumbnailURL);
 					$('#thumbPreview').attr("src", thumbnailURL);
+					$('#thumbPreview').removeClass("hide");
+					$('#downloadThumb').attr("href", thumbnailURL);
 				};
 				// CALL THE FUNCTIONS TO GET THE ID FROM WISTIA AND THE INPUT FIELD
 				getThumbnailUrl(mediaHashedId, parseJSON);
+			}
+			// SAVING THE SUBDOMAIN USED
+			window.onbeforeunload = function() {
+				localStorage.setItem(subdomain, $('#wistiaSubdomain').val());
+			}
+			window.onload = function() {
+				var subdomain = localStorage.getItem(subdomain);
+				if (subdomain !== null) $('#wistiaSubdomain').val(subdomain);
 			}
 		</script>
 		<!-- GOOGLE ANALYTICS -->

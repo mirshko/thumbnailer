@@ -20,19 +20,32 @@
 		"bl": 0,
 		"ft": 16,
 		"ma": 0,
-		"oA": 2,
+		"oA": 1,
 		"oAP": "\/master-min.css",
-		"oF": 0,
+		"oF": 1,
 		"oS": 0
+		},
+	"\/master.scss": {
+		"aP": 0,
+		"bl": 0,
+		"dP": 10,
+		"dS": 0,
+		"ft": 4,
+		"ma": 0,
+		"oA": 0,
+		"oAP": "\/master.css",
+		"oF": 2,
+		"oS": 3,
+		"uL": 1
 		},
 	"\/normalize.css": {
 		"aP": 0,
 		"bl": 0,
 		"ft": 16,
 		"ma": 0,
-		"oA": 2,
+		"oA": 1,
 		"oAP": "\/normalize-min.css",
-		"oF": 0,
+		"oF": 1,
 		"oS": 0
 		},
 	"\/README.md": {
@@ -43,9 +56,9 @@
 		"ema": 1,
 		"eSQ": 1,
 		"ft": 4096,
-		"oA": 0,
+		"oA": 1,
 		"oAP": "\/README.html",
-		"oF": 0,
+		"oF": 1,
 		"oFM": 0,
 		"oS": 0,
 		"pHT": 0,
@@ -56,9 +69,9 @@
 	"\/seo_thumb.png": {
 		"ft": 32768,
 		"iS": 782966,
-		"oA": 0,
+		"oA": 1,
 		"oAP": "\/seo_thumb.png",
-		"oF": 0,
+		"oF": 1,
 		"opt": 0
 		}
 	},
