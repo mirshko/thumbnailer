@@ -63,7 +63,7 @@ h1 {
 }
 
 .field {
-	margin: 48px 0;
+	margin: 48px 0 56px 0;
 }
 
 input {
@@ -131,30 +131,30 @@ label {
 
 ::placeholder {
 	font-family: sans-serif;
-	font-weight: normal;
-	color: rgba(0, 0, 0, 0.57) !important;
+	font-size: 14px;
+	color: rgba(0, 0, 0, 0.38) !important;
 }
 
 ::-webkit-input-placeholder {
 	font-family: sans-serif;
-	font-weight: normal;
-	color: rgba(0, 0, 0, 0.57) !important;
+	font-size: 14px;
+	color: rgba(0, 0, 0, 0.38) !important;
 }
 
 ::-moz-placeholder {
 	font-family: sans-serif;
-	font-weight: normal;
-	color: rgba(0, 0, 0, 0.57) !important;
+	font-size: 14px;
+	color: rgba(0, 0, 0, 0.38) !important;
 }
 
 :-ms-input-placeholder {
 	font-family: sans-serif;
-	font-weight: normal;
-	color: rgba(0, 0, 0, 0.57) !important;
+	font-size: 14px;
+	color: rgba(0, 0, 0, 0.38) !important;
 }
 
 :-moz-placeholder {
 	font-family: sans-serif;
-	font-weight: normal;
-	color: rgba(0, 0, 0, 0.57) !important;
+	font-size: 14px;
+	color: rgba(0, 0, 0, 0.38) !important;
 }
