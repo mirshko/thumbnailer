@@ -3,6 +3,7 @@ html, input, button, pre {
 }
 html {
 	line-height: 1.5;
+	font-family: sans-serif;
 }
 h1 {
 	margin-bottom: 16px;
@@ -51,14 +52,13 @@ h1 {
     margin-top: 48px;
 }
 .explainer-text {
-	span {
-		font-family: monospace;
-	}
-	i {
-		font-weight: bold;
-	}
 	ol {
 		margin-top: 0;
+		margin-bottom: 8px;
+	}
+	p {
+		margin-top: 8px;
+		color: rgba(0, 0, 0, 0.57);
 	}
 }
 
@@ -68,27 +68,33 @@ h1 {
 
 input {
     outline: none;
-    width: 250px;
+    width: 200px;
     box-sizing: border-box;
     border: none;
     border-bottom: 2px solid rgba(0, 0, 0, 0.10);
     padding: 4px 8px;
     margin-bottom: 8px;
     transition: border-bottom .2s ease;
+	font-size: 16px;
+	font-weight: normal;
 	&.spaced-input {
 	    margin-right: 16px;
 	}
-	@media only screen and (min-width: 1076px) {
-		&.account-input {
-		    width: 400px;
-		    margin-bottom: 16px;
-		}
+	&.account-input {
+		width: 200px;
+		margin-bottom: 24px;
+		margin-right: 0;
+		text-align: right;
+		padding-right: 0;
 	}
 	@media only screen and (max-width: 1076px) {
 		width: 100%;
         max-width: 400px;
         margin-bottom: 16px;
 	}
+}
+.account-subdomain {
+	display: inline;
 }
 button {
     border-radius: 3px;
@@ -106,7 +112,7 @@ input {
     	border-bottom: 2px solid rgba(255, 0, 0, 0.76);
 	}
 	&:active, &:focus {
-		border-bottom: 2px solid rgba(0, 0, 0, 0.57);
+		border-bottom: 2px solid rgba(0, 0, 0, 0.87);
 	}
 }
 .responsive-img {
@@ -115,4 +121,40 @@ input {
 }
 .hide {
 	display: none;
+}
+label {
+	display: block;
+	margin-bottom: 8px;
+	// font-size: 14px;
+	color: rgba(0, 0, 0, 0.57);
+}
+
+::placeholder {
+	font-family: sans-serif;
+	font-weight: normal;
+	color: rgba(0, 0, 0, 0.57) !important;
+}
+
+::-webkit-input-placeholder {
+	font-family: sans-serif;
+	font-weight: normal;
+	color: rgba(0, 0, 0, 0.57) !important;
+}
+
+::-moz-placeholder {
+	font-family: sans-serif;
+	font-weight: normal;
+	color: rgba(0, 0, 0, 0.57) !important;
+}
+
+:-ms-input-placeholder {
+	font-family: sans-serif;
+	font-weight: normal;
+	color: rgba(0, 0, 0, 0.57) !important;
+}
+
+:-moz-placeholder {
+	font-family: sans-serif;
+	font-weight: normal;
+	color: rgba(0, 0, 0, 0.57) !important;
 }

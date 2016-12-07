@@ -27,26 +27,29 @@
 			<div class="container">
 				<div class="wrapper">
 					<h1>Wistia Thumbnail URL Generator</h1>
+					<!-- FOLLOW BUTTON -->
 					<div class="explainer">
 						<div class="explainer-text">
 							<ol>
-								<li>Enter your Wistia subdomain <span>(<strong>company</strong>.wistia.com)</span></li>
-								<li>The ID from the video you want <span>(...wistia.com/medias/<strong>12345abdce</strong>)</span></li>
-								<li>Then finally, the <span><strong>width</strong></span> and <span><strong>height</strong></span> for the desired thumbnail</li>
+								<li>Enter your Wistia account subdomain (<strong>company</strong>.wistia.com)</li>
+								<li>Enter the ID from the Wistia video (...wistia.com/medias/<strong>12345abdce</strong>)</li>
+								<li>Enter the <strong>width</strong> and <strong>height</strong> for the desired thumbnail *</li>
 							</ol>
+							<p><i>* Note that the width and height use a crop function, so make sure your height matches the aspect ratio of the video.</i></p>
+							<a class="github-button" href="https://github.com/mirshko" data-style="mega" data-count-href="/mirshko/followers" data-count-api="/users/mirshko#followers" data-count-aria-label="# followers on GitHub" aria-label="Follow @mirshko on GitHub">Follow @mirshko</a>
+							<!-- STAR BUTTON -->
+							<a class="github-button" href="https://github.com/mirshko/Wistia-Thumbnail-URL-Getter" data-icon="octicon-star" data-style="mega" data-count-href="/mirshko/Wistia-Thumbnail-URL-Getter/stargazers" data-count-api="/repos/mirshko/Wistia-Thumbnail-URL-Getter#stargazers_count" data-count-aria-label="# stargazers on GitHub" aria-label="Star mirshko/Wistia-Thumbnail-URL-Getter on GitHub">Star</a>
+
 						</div>
-						<!-- FOLLOW BUTTON -->
-						<a class="github-button" href="https://github.com/mirshko" data-style="mega" data-count-href="/mirshko/followers" data-count-api="/users/mirshko#followers" data-count-aria-label="# followers on GitHub" aria-label="Follow @mirshko on GitHub">Follow @mirshko</a>
-						<!-- STAR BUTTON -->
-						<a class="github-button" href="https://github.com/mirshko/Wistia-Thumbnail-URL-Getter" data-icon="octicon-star" data-style="mega" data-count-href="/mirshko/Wistia-Thumbnail-URL-Getter/stargazers" data-count-api="/repos/mirshko/Wistia-Thumbnail-URL-Getter#stargazers_count" data-count-aria-label="# stargazers on GitHub" aria-label="Star mirshko/Wistia-Thumbnail-URL-Getter on GitHub">Star</a>
 					</div>
 					<!-- INPUT -->
 					<form class="field" action="index.html" method="post">
-						<input class="account-input spaced-input" id="wistiaSubdomain" type="text" name="wistiaSubdomain" placeholder="Enter Wistia Subdomain">
+						<!-- <label>Wistia Subdomain</label> -->
+						<input class="account-input spaced-input" id="wistiaSubdomain" type="text" name="wistiaSubdomain" placeholder="Wistia subdomain"><p class="account-subdomain">.wistia.com</p>
 						<br>
-						<input class="spaced-input" id="wistiaID" type="text" name="wistiaID" placeholder="Enter Wistia ID">
-						<input class="spaced-input" id="wistiaThumbWidth" type="number" name="wistiaThumbWidth" placeholder="Enter Width">
-						<input id="wistiaThumbHeight" type="number" name="wistiaThumbHeight" placeholder="Enter Height">
+						<input class="spaced-input" id="wistiaID" type="text" name="wistiaID" placeholder="Wistia ID">
+						<input class="spaced-input" id="wistiaThumbWidth" type="number" name="wistiaThumbWidth" placeholder="Width">
+						<input id="wistiaThumbHeight" type="number" name="wistiaThumbHeight" placeholder="Height">
 						<!-- JUST DO IT!!! -->
 						<br>
 						<button id="getThumb" disabled="true" type="button" name="button">Get Thumbnail</button>
