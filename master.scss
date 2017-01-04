@@ -1,61 +1,81 @@
-html, input, button, pre {
-    color: rgba(0, 0, 0, 0.87);
+@import url( 'https://fonts.googleapis.com/css?family=Roboto');
+
+button,
+html,
+input,
+pre {
+	color: rgba(0, 0, 0, 0.87);
 }
+
 html {
 	line-height: 1.5;
-	font-family: sans-serif;
+	font-family: "Roboto", sans-serif;
 }
+
 h1 {
 	margin-bottom: 16px;
 	line-height: normal;
 }
 @media only screen and (min-width: 0) {
-    html { font-size: 15px; }
+	html {
+		font-size: 15px;
+	}
 }
 @media only screen and (min-width: 1075px) {
-    html { font-size: 15.5px; }
+	html {
+		font-size: 15.5px;
+	}
 }
 @media only screen and (min-width: 1200px) {
-    html { font-size: 16px; }
+	html {
+		font-size: 16px;
+	}
 }
 
 .container {
-    margin: 0 auto;
-    max-width: 1360px;
-    width: 90%;
+	margin: 0 auto;
+	max-width: 1360px;
+	width: 90%;
 }
-
 @media only screen and (min-width: 601px) {
-    .container { width: 85%; }
+	.container {
+		width: 85%;
+	}
 }
-
 @media only screen and (min-width: 1076px) {
-    .container { width: 72.5%; }
+	.container {
+		width: 72.5%;
+	}
 }
-
 @media only screen and (min-width: 1076px) and (max-width: 1440px) {
-    .container { width: 85%; }
+	.container {
+		width: 85%;
+	}
 }
 
 .code-block {
-    margin-bottom: 24px;
-    padding: 24px;
-    background-color: #EEE;
-    border-radius: 3px;
-    overflow: scroll;
-	pre {
-	    margin: 0;
+	margin-bottom: 24px;
+	padding: 24px;
+	background-color: #EEE;
+	border-radius: 3px;
+	overflow: scroll;
+
+	span {
+		margin: 0;
+		font-family: monospace;
 	}
 }
 
 .wrapper {
-    margin-top: 48px;
+	margin-top: 48px;
 }
+
 .explainer-text {
 	ol {
 		margin-top: 0;
 		margin-bottom: 8px;
 	}
+
 	p {
 		margin-top: 8px;
 		color: rgba(0, 0, 0, 0.57);
@@ -63,23 +83,25 @@ h1 {
 }
 
 .field {
-	margin: 48px 0 56px 0;
+	margin: 48px 0 56px;
 }
 
 input {
-    outline: none;
-    width: 200px;
-    box-sizing: border-box;
-    border: none;
-    border-bottom: 2px solid rgba(0, 0, 0, 0.10);
-    padding: 4px 8px;
-    margin-bottom: 8px;
-    transition: border-bottom .2s ease;
+	outline: none;
+	width: 200px;
+	box-sizing: border-box;
+	border: none;
+	border-bottom: 2px solid rgba(0, 0, 0, 0.10);
+	padding: 4px 8px;
+	margin-bottom: 8px;
+	transition: border-bottom 0.2s ease;
 	font-size: 16px;
 	font-weight: normal;
+
 	&.spaced-input {
-	    margin-right: 16px;
+		margin-right: 16px;
 	}
+
 	&.account-input {
 		width: 200px;
 		margin-bottom: 24px;
@@ -89,72 +111,72 @@ input {
 	}
 	@media only screen and (max-width: 1076px) {
 		width: 100%;
-        max-width: 400px;
-        margin-bottom: 16px;
+		max-width: 400px;
+		margin-bottom: 16px;
 	}
 }
+
 .account-subdomain {
 	display: inline;
 }
+
 button {
-    border-radius: 3px;
-    background-color: #DDD;
-    border: none;
-    padding: 8px 16px;
-    margin-top: 16px;
+	border-radius: 3px;
+	background-color: #DDD;
+	border: none;
+	padding: 8px 16px;
+	margin-top: 16px;
+
 	&:disabled {
-	    background-color: #EEE;
-	    color: rgba(0, 0, 0, 0.38);
+		background-color: #EEE;
+		color: rgba(0, 0, 0, 0.38);
 	}
 }
+
 input {
 	&:invalid {
-    	border-bottom: 2px solid rgba(255, 0, 0, 0.76);
+		border-bottom: 2px solid rgba(255, 0, 0, 0.76);
 	}
-	&:active, &:focus {
+
+	&:active,
+	&:focus {
 		border-bottom: 2px solid rgba(0, 0, 0, 0.87);
 	}
 }
+
 .responsive-img {
-    max-width: 100%;
-    height: auto;
+	max-width: 100%;
+	height: auto;
 }
+
 .hide {
 	display: none;
 }
+
 label {
 	display: block;
 	margin-bottom: 8px;
-	// font-size: 14px;
 	color: rgba(0, 0, 0, 0.57);
 }
+@mixin placeholder {
+	::-webkit-input-placeholder {
+		@content
+	}
 
-::placeholder {
-	font-family: sans-serif;
-	font-size: 14px;
-	color: rgba(0, 0, 0, 0.38) !important;
-}
+	:-moz-placeholder {
+		@content
+	}
 
-::-webkit-input-placeholder {
-	font-family: sans-serif;
-	font-size: 14px;
-	color: rgba(0, 0, 0, 0.38) !important;
-}
+	::-moz-placeholder {
+		@content
+	}
 
-::-moz-placeholder {
-	font-family: sans-serif;
-	font-size: 14px;
+	:-ms-input-placeholder {
+		@content
+	}
+};
+@include placeholder {
 	color: rgba(0, 0, 0, 0.38) !important;
-}
-
-:-ms-input-placeholder {
-	font-family: sans-serif;
-	font-size: 14px;
-	color: rgba(0, 0, 0, 0.38) !important;
-}
-
-:-moz-placeholder {
-	font-family: sans-serif;
-	font-size: 14px;
-	color: rgba(0, 0, 0, 0.38) !important;
+	// font-size: 14px;
+	font-family: "Roboto", sans-serif;
 }

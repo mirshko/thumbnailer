@@ -1,129 +1,76 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<!-- PAGE STUFF -->
-		<meta charset="utf-8">
-		<title>Wistia Thumbnail URL Generator</title>
-		<meta name="author" content="Jeff Reiner">
-	    <meta name="description" content="Helps you get the thumbnail URL for your Wistia videos.">
-		<!-- SOCIAL SHARING STUFF -->
-		<meta property="og:title" content="Wistia Thumbnail URL Generator">
-		<meta property="og:description" content="Helps you get the thumbnail URL for your Wistia videos.">
-		<meta property="og:image" content="https://mirshko.github.io/Wistia-Thumbnail-URL-Generator/seo_thumb.png">
-		<meta property="og:url" content="https://mirshko.github.io/Wistia-Thumbnail-URL-Generator/">
-		<meta name="twitter:title" content="Wistia Thumbnail URL Generator">
-		<meta name="twitter:description" content="Helps you get the thumbnail URL for your Wistia videos.">
-		<meta name="twitter:image" content="https://mirshko.github.io/Wistia-Thumbnail-URL-Generator/seo_thumb.png">
-		<meta name="twitter:card" content="summary_large_image">
-		<!-- CSS -->
-		<link rel="stylesheet" href="normalize.css">
-		<link rel="stylesheet" href="master.css">
-		<!-- JS -->
-		<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-		<script async defer src="https://buttons.github.io/buttons.js"></script>
-	</head>
-	<body>
-		<main>
-			<div class="container">
-				<div class="wrapper">
-					<h1>Wistia Thumbnail URL Generator</h1>
-					<!-- FOLLOW BUTTON -->
-					<div class="explainer">
-						<div class="explainer-text">
-							<ol>
-								<li>Enter your Wistia account subdomain (<strong>company</strong>.wistia.com)</li>
-								<li>Enter the ID from the Wistia video (...wistia.com/medias/<strong>12345abdce</strong>)</li>
-								<li>Enter the <strong>width</strong> and <strong>height</strong> for the desired thumbnail *</li>
-							</ol>
-							<p><i>* Note that the width and height use a crop function, so make sure your height matches the aspect ratio of the video.</i></p>
-							<a class="github-button" href="https://github.com/mirshko" data-style="mega" data-count-href="/mirshko/followers" data-count-api="/users/mirshko#followers" data-count-aria-label="# followers on GitHub" aria-label="Follow @mirshko on GitHub">Follow @mirshko</a>
-							<!-- STAR BUTTON -->
-							<a class="github-button" href="https://github.com/mirshko/Wistia-Thumbnail-URL-Getter" data-icon="octicon-star" data-style="mega" data-count-href="/mirshko/Wistia-Thumbnail-URL-Getter/stargazers" data-count-api="/repos/mirshko/Wistia-Thumbnail-URL-Getter#stargazers_count" data-count-aria-label="# stargazers on GitHub" aria-label="Star mirshko/Wistia-Thumbnail-URL-Getter on GitHub">Star</a>
 
-						</div>
-					</div>
-					<!-- INPUT -->
+<head>
+	<!-- PAGE -->
+	<meta charset="utf-8">
+	<title>Wistia Thumbnail Generator</title>
+	<meta name="author" content="Jeff Reiner">
+    <meta name="description" content="Helps you get thumbnails from Wistia videos.">
+	<!-- SOCIAL -->
+	<meta property="og:title" content="Wistia Thumbnail Generator">
+	<meta property="og:description" content="Helps you get thumbnails from Wistia videos.">
+	<meta property="og:image" content="../dist/seo_thumb.png">
+	<meta property="og:url" content="https://github.com/mirshko/wistia-thumbnail-generator">
+	<meta name="twitter:title" content="Wistia Thumbnail Generator">
+	<meta name="twitter:description" content="Helps you get thumbnails from Wistia videos.">
+	<meta name="twitter:image" content="../dist/seo_thumb.png">
+	<meta name="twitter:card" content="summary_large_image">
+	<!-- CSS -->
+	<link rel="stylesheet" href="../dist/normalize.css">
+	<link rel="stylesheet" href="../dist/master.css">
+</head>
 
-					<form class="field" action="index.html" method="post">
-						<h3>Thumbnail Information</h3>
-						<input class="account-input spaced-input" id="wistiaSubdomain" type="text" name="wistiaSubdomain" placeholder="Wistia Subdomain"><p class="account-subdomain">.wistia.com</p>
-						<br>
-						<input class="spaced-input" id="wistiaID" type="text" name="wistiaID" placeholder="Wistia ID">
-						<input class="spaced-input" id="wistiaThumbWidth" type="number" name="wistiaThumbWidth" placeholder="Width">
-						<input id="wistiaThumbHeight" type="number" name="wistiaThumbHeight" placeholder="Height">
-						<!-- JUST DO IT!!! -->
-						<br>
-						<button id="getThumb" disabled="true" type="button" name="button">Get Thumbnail</button>
-					</form>
-					<div class="code-block">
-						<pre><span id="thumbURL">Thumbnail URL</span></pre>
+<body>
+	<main>
+		<div class="container">
+			<div class="wrapper">
+				<!-- HEADER -->
+				<h1>Wistia Thumbnail URL Generator</h1>
+				<div class="explainer">
+					<div class="explainer-text">
+						<ol>
+							<li>Enter your Wistia account subdomain (<strong>company</strong>.wistia.com)</li>
+							<li>Enter the ID from the Wistia video (...wistia.com/medias/<strong>12345abdce</strong>)</li>
+							<li>Enter the <strong>width</strong> and <strong>height</strong> for the desired thumbnail *</li>
+						</ol>
+						<p><i>* Note that the width and height use a crop function, so make sure your height matches the aspect ratio of the video.</i></p>
+						<!-- STAR ON GITHUB -->
+						<a class="github-button" href="https://github.com/mirshko/wistia-thumbnail-generator" data-icon="octicon-star" data-style="mega" data-count-href="/mirshko/Wistia-Thumbnail-URL-Getter/stargazers" data-count-api="/repos/mirshko/Wistia-Thumbnail-URL-Getter#stargazers_count" data-count-aria-label="# stargazers on GitHub" aria-label="Star mirshko/Wistia-Thumbnail-URL-Getter on GitHub">Star on GitHub</a>
 					</div>
-					<a id="downloadThumb" download><img id="thumbPreview" alt="Click Me To Download!" class="responsive-img hide"></a>
 				</div>
+				<!-- INPUT -->
+				<form class="field" action="index.html" method="post">
+					<h3>Thumbnail Information</h3>
+					<input class="account-input spaced-input" id="wistiaSubdomain" type="text" name="wistiaSubdomain" placeholder="Wistia Subdomain"><p class="account-subdomain">.wistia.com</p>
+					<br>
+					<input class="spaced-input" id="wistiaID" type="text" name="wistiaID" placeholder="Wistia ID">
+					<input class="spaced-input" id="wistiaThumbWidth" type="number" name="wistiaThumbWidth" placeholder="Width">
+					<input id="wistiaThumbHeight" type="number" name="wistiaThumbHeight" placeholder="Height">
+					<br>
+					<button id="getThumb" disabled="true" type="button" name="button">Get Thumbnail</button>
+				</form>
+				<div class="code-block">
+					<span id="thumbURL">Thumbnail URL</span>
+				</div>
+				<a id="downloadThumb" download><img id="thumbPreview" alt="Click Me To Download!" class="responsive-img hide"></a>
 			</div>
-		</main>
-		<script type="text/javascript">
-			// DISABLE BUTTTON WHEN NO INPUT
-			$(document).ready(function(){
-				$('input').keyup(function() {
-					var empty = false;
-					$('input').each(function() {
-					    if ($(this).val().length == 0)
-					        empty = true;
-					});
-					if (empty)
-					    $('#getThumb').attr('disabled',true);
-					else
-						$('#getThumb').attr('disabled', false);
-				});
-			});
-			// NEEDED DUE TO SAVING SOME INPUT
-			var subdomain;
-			// SET BUTTON LISTENER
-			document.getElementById("getThumb").addEventListener("click", getThumbnail);
-			function getThumbnail() {
-				// GET / SET VALUES FROM INPUT FIELDS
-				var mediaHashedId = $('#wistiaID').val();
-				var width = $('#wistiaThumbWidth').val();
-				var height = $('#wistiaThumbHeight').val();
-				subdomain = $('#wistiaSubdomain').val();
-				// BUILD CALL TO WISTIA
-				var baseUrl = "https://fast.wistia.com/oembed/?url=";
-				// var accountUrl = escape($('#wistiaSubdomain').val().replace('/projects', ''));
-				var accountUrl = escape("http://" + subdomain + ".wistia.com");
-				// console.log(accountUrl);
-				function getThumbnailUrl(hashedId, callback) {
-					$.getJSON(baseUrl + accountUrl + '/medias/' + mediaHashedId + "&format=json&callback=?", callback);
-				}
-				// PARSE THE JSON FILE FROM WISTIA
-				function parseJSON(json) {
-					var thumbnailURL = json.thumbnail_url.replace(/\d+x\d+/, width + 'x' + height);
-					// DISPLAY IMAGE THUMBNAIL
-					$('#thumbURL').text(thumbnailURL);
-					$('#thumbPreview').attr("src", thumbnailURL);
-					$('#thumbPreview').removeClass("hide");
-					$('#downloadThumb').attr("href", thumbnailURL);
-				};
-				// CALL THE FUNCTIONS TO GET THE ID FROM WISTIA AND THE INPUT FIELD
-				getThumbnailUrl(mediaHashedId, parseJSON);
-			}
-			// SAVING THE SUBDOMAIN USED
-			window.onbeforeunload = function() {
-				localStorage.setItem(subdomain, $('#wistiaSubdomain').val());
-			}
-			window.onload = function() {
-				var subdomain = localStorage.getItem(subdomain);
-				if (subdomain !== null) $('#wistiaSubdomain').val(subdomain);
-			}
-		</script>
-		<!-- GOOGLE ANALYTICS -->
-		<script>
-			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-			})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-			ga('create', 'UA-88254613-1', 'auto');
-			ga('send', 'pageview');
-		</script>
-	</body>
+		</div>
+	</main>
+
+	<!-- JAVASCRIPT -->
+	<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+	<script src="../dist/master.js"></script>
+	<script async defer src="https://buttons.github.io/buttons.js"></script>
+	<script>
+		// GOOGLE ANALYTICS
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+		ga('create', 'UA-88254613-1', 'auto');
+		ga('send', 'pageview');
+	</script>
+</body>
+
 </html>
