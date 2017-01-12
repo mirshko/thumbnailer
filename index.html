@@ -7,6 +7,11 @@
 	<title>Wistia Thumbnail Generator</title>
 	<meta name="author" content="Jeff Reiner">
     <meta name="description" content="Helps you get thumbnails from Wistia videos.">
+	<meta name="theme-color" content="#000000">
+	<!-- SITE SPECS -->
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 	<!-- SOCIAL -->
 	<meta property="og:title" content="Wistia Thumbnail Generator">
 	<meta property="og:description" content="Helps you get thumbnails from Wistia videos.">
@@ -18,30 +23,43 @@
 	<meta name="twitter:card" content="summary_large_image">
 	<!-- CSS -->
 	<link rel="stylesheet" href="https://necolas.github.io/normalize.css/5.0.0/normalize.css">
-	<link rel="stylesheet" href="/css/master.min.css">
+	<link rel="stylesheet" href="dist/master.min.css">
+	<!-- FAVICON -->
+	<link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
+	<link rel="icon" type="image/png" href="favicon/favicon-32x32.png" sizes="32x32">
+	<link rel="icon" type="image/png" href="favicon/favicon-16x16.png" sizes="16x16">
+	<link rel="manifest" href="favicon/manifest.json">
+	<link rel="mask-icon" href="favicon/safari-pinned-tab.svg" color="#000000">
+	<link rel="shortcut icon" href="favicon/favicon.ico">
+	<meta name="msapplication-config" content="favicon/browserconfig.xml">
 </head>
 
 <body>
+	<header>
+		<div class="container">
+			<h1>Wistia Thumbnail URL Generator</h1>
+			<div class="explainer">
+				<div class="explainer-text">
+					<ol>
+						<li>Enter your Wistia account subdomain (<strong>company</strong>.wistia.com)</li>
+						<li>Enter the ID from the Wistia video (...wistia.com/medias/<strong>12345abdce</strong>)</li>
+						<li>Enter the <strong>width</strong> and <strong>height</strong> for the desired thumbnail *</li>
+					</ol>
+
+					<p><i>* Note that the width and height use a crop function, so make sure your height matches the aspect ratio of the video.</i></p>
+
+					<!-- STAR ON GITHUB -->
+					<a class="github-button" href="https://github.com/mirshko/wistia-thumbnail-generator" data-icon="octicon-star" data-style="mega" data-count-href="/mirshko/Wistia-Thumbnail-URL-Getter/stargazers" data-count-api="/repos/mirshko/Wistia-Thumbnail-URL-Getter#stargazers_count" data-count-aria-label="# stargazers on GitHub" aria-label="Star mirshko/Wistia-Thumbnail-URL-Getter on GitHub">Star on GitHub</a>
+				</div>
+			</div>
+		</div>
+	</header>
 	<main>
 		<div class="container">
-			<div class="wrapper">
-				<!-- HEADER -->
-				<h1>Wistia Thumbnail URL Generator</h1>
-				<div class="explainer">
-					<div class="explainer-text">
-						<ol>
-							<li>Enter your Wistia account subdomain (<strong>company</strong>.wistia.com)</li>
-							<li>Enter the ID from the Wistia video (...wistia.com/medias/<strong>12345abdce</strong>)</li>
-							<li>Enter the <strong>width</strong> and <strong>height</strong> for the desired thumbnail *</li>
-						</ol>
-						<p><i>* Note that the width and height use a crop function, so make sure your height matches the aspect ratio of the video.</i></p>
-						<!-- STAR ON GITHUB -->
-						<a class="github-button" href="https://github.com/mirshko/wistia-thumbnail-generator" data-icon="octicon-star" data-style="mega" data-count-href="/mirshko/Wistia-Thumbnail-URL-Getter/stargazers" data-count-api="/repos/mirshko/Wistia-Thumbnail-URL-Getter#stargazers_count" data-count-aria-label="# stargazers on GitHub" aria-label="Star mirshko/Wistia-Thumbnail-URL-Getter on GitHub">Star on GitHub</a>
-					</div>
-				</div>
-				<!-- INPUT -->
-				<form class="field" action="index.html" method="post">
-					<h3>Thumbnail Information</h3>
+			<div class="field">
+				<h3>Thumbnail Information</h3>
+
+				<form action="index.html" method="post">
 					<input class="account-input spaced-input" id="wistiaSubdomain" type="text" name="wistiaSubdomain" placeholder="Wistia Subdomain"><p class="account-subdomain">.wistia.com</p>
 					<br>
 					<input class="spaced-input" id="wistiaID" type="text" name="wistiaID" placeholder="Wistia ID">
@@ -50,17 +68,18 @@
 					<br>
 					<button id="getThumb" disabled="true" type="button" name="button">Get Thumbnail</button>
 				</form>
-				<div class="code-block">
-					<span id="thumbURL">Thumbnail URL</span>
-				</div>
-				<a id="downloadThumb" download><img id="thumbPreview" alt="Click Me To Download!" class="responsive-img hide"></a>
 			</div>
+
+			<div class="code-block">
+				<span id="thumbURL">Thumbnail URL</span>
+			</div>
+			<a id="downloadThumb" download><img id="thumbPreview" alt="Click Me To Download!" class="responsive-img hide"></a>
 		</div>
 	</main>
 
 	<!-- JAVASCRIPT -->
 	<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-	<script src="master.min.js"></script>
+	<script src="dist/master.min.js"></script>
 	<script async defer src="https://buttons.github.io/buttons.js"></script>
 	<script>
 		// GOOGLE ANALYTICS

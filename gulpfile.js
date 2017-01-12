@@ -14,17 +14,17 @@ gulp.task('browser-sync', function() {
 
 // SERVE
 gulp.task('serve', ['sass', 'browser-sync'], function() {
-    gulp.watch('./*.scss', ['sass']);
+    gulp.watch('./scss/*.scss', ['sass']);
     gulp.watch('./*.html').on('change', browserSync.reload);
 });
 
 // COMPILE SASS
 gulp.task('sass', function() {
-    return gulp.src('./*.scss')
+    return gulp.src('./scss/*.scss')
         .pipe(sass({
-            outputStyle: 'compressed'
+            outputStyle: 'expanded'
         }).on('error', sass.logError))
         .pipe(rename('master.min.css'))
-        .pipe(gulp.dest('./css/'))
+        .pipe(gulp.dest('./dist/'))
         .pipe(browserSync.stream());
 });

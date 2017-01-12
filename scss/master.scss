@@ -1,0 +1,181 @@
+@import url( 'https://fonts.googleapis.com/css?family=Roboto');
+
+// VARIABLES
+$off-black: rgba(0, 0, 0, 0.87);
+$medium-black: rgba(0, 0, 0, 0.57);
+$light-black: rgba(0, 0, 0, 0.38);
+$lightest-black: rgba(0, 0, 0, 0.12);
+
+$error-red: rgba(255, 0, 0, 0.76);
+
+$font: "Roboto", sans-serif;
+
+// MIXINS
+@mixin placeholder {
+	::-webkit-input-placeholder { @content }
+	:-moz-placeholder { @content }
+	::-moz-placeholder { @content }
+	:-ms-input-placeholder { @content }
+};
+
+button,
+html,
+input,
+pre {
+	color: $off-black;
+}
+
+html {
+	line-height: 1.5;
+	font-family: $font;
+
+	@media only screen and (min-width: 0) {
+		font-size: 15px;
+	}
+	@media only screen and (min-width: 1075px) {
+		font-size: 15.5px;
+	}
+	@media only screen and (min-width: 1200px) {
+		font-size: 16px;
+	}
+}
+
+
+h1 {
+	margin-bottom: 16px;
+	line-height: normal;
+}
+
+.container {
+	margin: 0 auto;
+	max-width: 1360px;
+	width: 90%;
+
+	@media only screen and (min-width: 601px) {
+		width: 85%;
+	}
+	@media only screen and (min-width: 1076px) {
+		width: 72.5%;
+	}
+	@media only screen and (min-width: 1076px) and (max-width: 1440px) {
+		width: 85%;
+	}
+}
+
+
+.code-block {
+	margin-bottom: 24px;
+	padding: 24px;
+	background-color: #EEE;
+	border-radius: 3px;
+	overflow: scroll;
+
+	span {
+		margin: 0;
+		font-family: monospace;
+	}
+}
+
+header {
+	margin-top: 56px;
+
+	@media only screen and (max-width: 600px) {
+		margin-top: 20px;
+	}
+}
+
+.field {
+	margin: 48px 0 56px;
+}
+
+.explainer-text {
+	ol {
+		margin-top: 0;
+		margin-bottom: 8px;
+	}
+
+	p {
+		margin-top: 8px;
+		color: $medium-black;
+	}
+}
+
+
+
+input {
+	width: 200px;
+	@media only screen and (max-width: 1076px) {
+		width: 100%;
+		max-width: 400px;
+		margin-bottom: 16px;
+	}
+
+	box-sizing: border-box;
+
+	padding: 4px 8px;
+	margin-bottom: 8px;
+
+	&.spaced-input {
+		margin-right: 16px;
+	}
+
+	&.account-input {
+		width: 200px;
+		margin-bottom: 24px;
+		margin-right: 0;
+		text-align: right;
+		padding-right: 0;
+	}
+
+	outline: none;
+	border: none;
+	border-bottom: 2px solid $lightest-black;
+	transition: border-bottom 0.2s ease;
+
+	&:invalid {
+		border-bottom: 2px solid $error-red;
+	}
+
+	&:active,
+	&:focus {
+		border-bottom: 2px solid $off-black;
+	}
+}
+
+label {
+	display: block;
+	margin-bottom: 8px;
+	color: $medium-black;
+}
+
+button {
+	border-radius: 3px;
+	background-color: #DDD;
+	border: none;
+	padding: 8px 16px;
+	margin-top: 16px;
+
+	&:disabled {
+		background-color: #EEE;
+		color: $light-black;
+	}
+}
+
+.account-subdomain {
+	display: inline;
+}
+
+.responsive-img {
+	max-width: 100%;
+	height: auto;
+}
+
+.hide {
+	display: none;
+}
+
+
+@include placeholder {
+	color: $light-black !important;
+	font-family: $font;
+}
