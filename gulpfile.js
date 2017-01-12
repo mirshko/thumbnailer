@@ -25,6 +25,6 @@ gulp.task('sass', function() {
             outputStyle: 'compressed'
         }).on('error', sass.logError))
         .pipe(rename('master.min.css'))
-        .pipe(gulp.dest('./'))
+        .pipe(gulp.dest('./css/'))
         .pipe(browserSync.stream());
 });
