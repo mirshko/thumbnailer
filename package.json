@@ -1,19 +1,20 @@
 {
-  "name": "reiner-web",
-  "version": "1.0.0",
-  "description": "reiner.io website",
-  "main": "index.html",
-  "scripts": {
-    "test": "test"
-  },
-  "author": "Jeff Reiner",
-  "license": "ISC",
-  "devDependencies": {
-    "browser-sync": "^2.18.5",
-    "gulp": "^3.9.1",
-    "gulp-concat": "^2.6.1",
-    "gulp-sass": "^3.0.0",
-    "gulp-surge": "^0.1.0",
-    "gulp-uglify": "^2.0.0"
-  }
+    "name": "reiner-web",
+    "version": "1.0.0",
+    "description": "reiner.io website",
+    "main": "index.html",
+    "scripts": {
+        "test": "xo"
+    },
+    "author": "Jeff Reiner",
+    "license": "ISC",
+    "devDependencies": {
+        "browser-sync": "^2.18.5",
+        "gulp": "^3.9.1",
+        "gulp-rename": "^1.2.2",
+        "gulp-sass": "^3.0.0",
+        "gulp-surge": "^0.1.0",
+        "xo": "^0.17.1"
+    },
+    "dependencies": {}
 }
