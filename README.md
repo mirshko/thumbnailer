@@ -1,4 +1,4 @@
-# Wistia Thumbnail URL Generator
+# Wistia Thumbnail Generator
 
 ### Details
 Useful tool to get the url and the image for a Wistia video's thumbnail in any desired size by just using its ID.
