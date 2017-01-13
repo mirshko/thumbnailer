@@ -84,6 +84,27 @@ header {
 	}
 }
 
+footer {
+	p {
+		position: absolute;
+		bottom: 0;
+		margin: 0;
+		padding: 0 0 32px 0;
+	}
+	a {
+		color: $off-black;
+		text-decoration: none;
+		padding-bottom: 2px;
+		border-bottom: 1px solid $off-black;
+
+		transition: all .2s;
+
+		&:hover {
+			padding-bottom: 4px;
+		}
+	}
+}
+
 .field {
 	margin: 48px 0 56px;
 }
