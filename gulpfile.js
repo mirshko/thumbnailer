@@ -2,6 +2,7 @@ var gulp = require('gulp');
 var browserSync = require('browser-sync').create();
 var sass = require('gulp-sass');
 var rename = require('gulp-rename');
+var surge = require('gulp-surge')
 
 // BROWSER-SYNC
 gulp.task('browser-sync', function() {
@@ -27,4 +28,12 @@ gulp.task('sass', function() {
         .pipe(rename('master.min.css'))
         .pipe(gulp.dest('./dist/'))
         .pipe(browserSync.stream());
+});
+
+// DEPLOY TO SURGE.SH
+gulp.task('deploy', [], function() {
+    return surge({
+        project: './', // PATH TO YOUR STATIC BUILD DIRECTORY
+        domain: 'thumbnailer.reiner.space' // YOUR DOMAIN OR SURGE SUBDOMAIN
+    });
 });

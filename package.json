@@ -4,7 +4,7 @@
     "description": "reiner.io website",
     "main": "index.html",
     "scripts": {
-        "test": "xo"
+        "test": ""
     },
     "author": "Jeff Reiner",
     "license": "ISC",
@@ -14,7 +14,6 @@
         "gulp-rename": "^1.2.2",
         "gulp-sass": "^3.0.0",
         "gulp-surge": "^0.1.0",
-        "xo": "^0.17.1"
     },
     "dependencies": {}
 }
