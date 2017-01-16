@@ -1,21 +1,28 @@
-@import url( 'https://fonts.googleapis.com/css?family=Roboto');
-
+@import url( 'https://fonts.googleapis.com/css?family=Roboto:400,500');
 // VARIABLES
 $off-black: rgba(0, 0, 0, 0.87);
 $medium-black: rgba(0, 0, 0, 0.57);
 $light-black: rgba(0, 0, 0, 0.38);
 $lightest-black: rgba(0, 0, 0, 0.12);
-
 $error-red: rgba(255, 0, 0, 0.76);
-
 $font: "Roboto", sans-serif;
-
 // MIXINS
 @mixin placeholder {
-	::-webkit-input-placeholder { @content }
-	:-moz-placeholder { @content }
-	::-moz-placeholder { @content }
-	:-ms-input-placeholder { @content }
+	::-webkit-input-placeholder {
+		@content
+	}
+
+	:-moz-placeholder {
+		@content
+	}
+
+	::-moz-placeholder {
+		@content
+	}
+
+	:-ms-input-placeholder {
+		@content
+	}
 };
 
 button,
@@ -25,10 +32,20 @@ pre {
 	color: $off-black;
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+strong {
+	font-weight: 500;
+}
+
 html {
 	line-height: 1.5;
 	font-family: $font;
-
+	font-weight: 400;
 	@media only screen and (min-width: 0) {
 		font-size: 15px;
 	}
@@ -40,7 +57,6 @@ html {
 	}
 }
 
-
 h1 {
 	margin-bottom: 16px;
 	line-height: normal;
@@ -50,7 +66,6 @@ h1 {
 	margin: 0 auto;
 	max-width: 1360px;
 	width: 90%;
-
 	@media only screen and (min-width: 601px) {
 		width: 85%;
 	}
@@ -62,9 +77,9 @@ h1 {
 	}
 }
 
-
 .code-block {
-	margin-bottom: 24px;
+	margin-top: 32px;
+	margin-bottom: 32px;
 	padding: 24px;
 	background-color: #EEE;
 	border-radius: 3px;
@@ -78,35 +93,30 @@ h1 {
 
 header {
 	margin-top: 56px;
-
+	margin-bottom: 40px;
 	@media only screen and (max-width: 600px) {
 		margin-top: 20px;
 	}
 }
 
+main {
+	margin-top: 40px;
+	margin-bottom: 56px;
+}
+
 footer {
 	p {
-		position: absolute;
-		bottom: 0;
-		margin: 0;
-		padding: 0 0 32px 0;
+		margin-top: 56px;
+		margin-bottom: 56px;
+		padding: 0 0 32px;
 	}
+
 	a {
 		color: $off-black;
 		text-decoration: none;
-		padding-bottom: 2px;
-		border-bottom: 1px solid $off-black;
-
-		transition: all .2s;
-
-		&:hover {
-			padding-bottom: 4px;
-		}
+		padding-bottom: 4px;
+		border-bottom: 2px solid $off-black;
 	}
-}
-
-.field {
-	margin: 48px 0 56px;
 }
 
 .explainer-text {
@@ -121,8 +131,6 @@ footer {
 	}
 }
 
-
-
 input {
 	width: 200px;
 	@media only screen and (max-width: 1076px) {
@@ -130,9 +138,7 @@ input {
 		max-width: 400px;
 		margin-bottom: 16px;
 	}
-
 	box-sizing: border-box;
-
 	padding: 4px 8px;
 	margin-bottom: 8px;
 
@@ -147,7 +153,6 @@ input {
 		text-align: right;
 		padding-right: 0;
 	}
-
 	outline: none;
 	border: none;
 	border-bottom: 2px solid $lightest-black;
@@ -194,8 +199,6 @@ button {
 .hide {
 	display: none;
 }
-
-
 @include placeholder {
 	color: $light-black !important;
 	font-family: $font;

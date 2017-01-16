@@ -23,7 +23,7 @@ gulp.task('serve', ['sass', 'browser-sync'], function() {
 gulp.task('sass', function() {
     return gulp.src('./scss/*.scss')
         .pipe(sass({
-            outputStyle: 'expanded'
+            outputStyle: 'compressed'
         }).on('error', sass.logError))
         .pipe(rename('master.min.css'))
         .pipe(gulp.dest('./dist/'))
