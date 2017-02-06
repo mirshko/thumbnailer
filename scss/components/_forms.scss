@@ -1,0 +1,116 @@
+button,
+html,
+input,
+pre {
+	color: $off-black;
+}
+
+.input-field {
+	&:not(:first-child) {
+		margin-top: 16px;
+	}
+
+	&.extras {
+		margin-top: 32px;
+		margin-bottom: 32px;
+	}
+}
+
+input {
+	&[type="text"], &[type="number"] {
+		width: 200px;
+
+		@media only screen and (max-width: 1076px) {
+			width: 100%;
+			max-width: 400px;
+			margin-bottom: 16px;
+		}
+
+		box-sizing: border-box;
+		padding: 4px 0;
+		outline: none;
+		border: none;
+		border-bottom: 2px solid $lightest-black;
+		transition: border-bottom 0.2s ease;
+
+		&.account-input { text-align: right; }
+
+		&:active,
+		&:focus { border-bottom: 2px solid $off-black; }
+
+		&:invalid {
+			border: 2px solid $error;
+		}
+	}
+
+	&[type="checkbox"] {
+		outline: none;
+		position: absolute;
+		left: -9999px;
+		opacity: 0;
+		display: none;
+
+		& + label {
+			color: $medium-black;
+			position: relative;
+
+			padding-left: 28px;
+
+			cursor: pointer;
+
+			height: 20px;
+			line-height: 20px;
+
+			&:before {
+				content: '';
+				position: absolute;
+				top: 0;
+				left: 0;
+
+				height: 14px;
+				width: 14px;
+
+				border: 2px solid $medium-black;
+				border-radius: 2px;
+
+				transition: background-color .2s, border .2s, color .2s;
+			}
+
+			transition: background-color .2s, border .2s, color .2s;
+		}
+
+		&:checked + label {
+			color: $off-black;
+
+			&:before {
+				border: 2px solid $off-black;
+				background-color: $off-black;
+
+				content: '✔';
+				color: #fff;
+
+				line-height: 14px;
+				font-size: 12px;
+				text-align: center;
+			}
+		}
+	}
+}
+
+label {
+	display: inline;
+	line-height: 1.5;
+	color: $off-black;
+}
+
+button {
+	border-radius: 2px;
+	background-color: #DDD;
+	border: none;
+	padding: 8px 16px;
+
+	&:disabled {
+		background-color: #EEE;
+		color: $light-black;
+	}
+}
