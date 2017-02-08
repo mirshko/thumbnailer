@@ -37,10 +37,6 @@ input {
 
 		&:active,
 		&:focus { border-bottom: 2px solid $off-black; }
-
-		&:invalid {
-			border: 2px solid $error;
-		}
 	}
 
 	&[type="checkbox"] {
