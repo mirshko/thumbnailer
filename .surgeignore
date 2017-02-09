@@ -4,3 +4,5 @@ scss
 *.md
 gulpfile.js
 *.json
+.gitignore
+.editorconfig
