@@ -1,7 +1,12 @@
 // DISABLE BUTTTON WHEN NO INPUT
-$(document).ready(function () {
-	$('input').keyup(function () {
-		$('#getThumb').attr('disabled', $('input[required]').toArray().some(function (el) {
+$(document).ready(function() {
+	$('input').keyup(function() {
+		$('#getThumb').attr('disabled', $('input[required]').toArray().some(function(el) {
+			return el.value.length == 0;
+		}));
+	});
+	$('#wistiaPlayButtonColor').keyup(function() {
+		$('#wistiaPlayButton').attr('disabled', $('#wistiaPlayButtonColor').toArray().some(function(el) {
 			return el.value.length == 0;
 		}));
 	});
@@ -9,11 +14,17 @@ $(document).ready(function () {
 
 var $loading = $('#loading').hide();
 
+toastr.options = {
+	"newestOnTop": true,
+	"progressBar": true,
+	"extendedTimeOut": "2500"
+}
+
 $(document)
-	.ajaxStart(function () {
+	.ajaxStart(function() {
 		$loading.show();
 	})
-	.ajaxStop(function () {
+	.ajaxStop(function() {
 		$loading.hide();
 	});
 
@@ -21,6 +32,11 @@ $(document)
 document.getElementById('getThumb').addEventListener('click', getThumbnail);
 
 function getThumbnail() {
+	// RESET FIELDS
+	$('#dynamic').remove();
+	$('#url').text("Thumbnail URL");
+	$('#downloadThumb').attr('href', "#");
+
 	// GET / SET VALUES FROM INPUT FIELDS
 	var mediaHashedId = $('#wistiaID').val();
 	var width = $('#wistiaThumbWidth').val();
@@ -31,8 +47,12 @@ function getThumbnail() {
 	// BUILD CALL TO WISTIA
 	function getThumbnailUrl(hashedId, callback) {
 		$.getJSON('https://fast.wistia.com/oembed/?url=http://home.wistia.com/medias/' + mediaHashedId + '&format=json&callback=?', callback)
-			.error(function () {
-				alert('Failure. The video ID or account URL may be incorrect. Try again.');
+			.fail(function() {
+				$('#wistiaID').addClass("invalid");
+				toastr.error('Something went wrong. Try again');
+			})
+			.done(function() {
+				$('#wistiaID').removeClass("invalid");
 			});
 	}
 
@@ -47,9 +67,12 @@ function getThumbnail() {
 		}
 
 		// DISPLAY IMAGE THUMBNAIL
-		$('#thumbURL').text(thumbnailURL);
-		$('#thumbPreview').attr('src', thumbnailURL);
-		$('#thumbPreview').removeClass('hide');
+		var thumb = $('<img id="dynamic" class="responsive-img">');
+
+		thumb.attr('src', thumbnailURL);
+		thumb.appendTo('#downloadThumb');
+
+		$('#url').text(thumbnailURL);
 		$('#downloadThumb').attr('href', thumbnailURL);
 	}
 

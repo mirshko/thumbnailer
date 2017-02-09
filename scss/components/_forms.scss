@@ -73,6 +73,12 @@ input {
 			transition: background-color .2s, border .2s, color .2s;
 		}
 
+		&:disabled + label {
+			color: $lightest-black;
+
+			&:before { border: 2px solid $lightest-black; }
+		}
+
 		&:checked + label {
 			color: $off-black;
 
@@ -114,4 +120,6 @@ button {
 		background-color: #EEE;
 		color: $light-black;
 	}
+
+	transition: all .2s;
 }

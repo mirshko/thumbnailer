@@ -51,6 +51,7 @@
 	<main>
 		<div class="container">
 			<h3>Thumbnail Information</h4>
+			<!-- FORM -->
 			<form action="index.html" method="post">
 				<div class="input-field">
 					<input required id="wistiaID" type="text" name="wistiaID" placeholder="Wistia ID">
@@ -64,12 +65,13 @@
 				<div class="input-field extras">
 					<h3>Extras</h3>
 					<input id="wistiaPlayButtonColor" minlength="6" maxlength="6" type="text" name="wistiaPlayButtonColor" placeholder="Play Button Color (Hex)">
-					<input id="wistiaPlayButton" type="checkbox" name="wistiaPlayButton"><label for="wistiaPlayButton">Enable</label>
+					<input id="wistiaPlayButton" disabled="true" type="checkbox" name="wistiaPlayButton"><label for="wistiaPlayButton">Enable</label>
 				</div>
 				<button id="getThumb" disabled="true" type="button" name="button">Get Thumbnail</button>
 			</form>
+			<!-- THUMBNAIL URL -->
 			<div class="code-block">
-				<span id="thumbURL">Thumbnail URL</span>
+				<span id="url">Thumbnail URL</span>
 			</div>
 			<!-- LOADING SVG -->
 			<svg version="1.1" id="loading" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="40px" height="40px" viewBox="0 0 40 40" enable-background="new 0 0 40 40" xml:space="preserve">
@@ -82,9 +84,9 @@
 					to="360 20 20"
 					dur=".75s"
 					repeatCount="indefinite"/>
-				</path>
-			</svg>
-			<a id="downloadThumb" download><img id="thumbPreview" alt="Click Me To Download!" class="responsive-img hide"></a>
+				</path></svg>
+			<!-- DOWNLOAD THUMBNAIL & IMG PREVIEW -->
+			<a id="downloadThumb" download></a>
 		</div>
 	</main>
 	<footer>
@@ -94,7 +96,8 @@
 	</footer>
 
 	<!-- JAVASCRIPT -->
-	<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 	<script src="dist/master.min.js"></script>
 
 	<script>

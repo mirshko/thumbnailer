@@ -5,6 +5,7 @@ $light-black: rgba(#000, 0.38);
 $lightest-black: rgba(#000, 0.12);
 
 $error: #e53935;
+$error-dark: #c62828;
 $success: #43a047;
 
 $font: "Roboto", sans-serif;
@@ -17,11 +18,11 @@ $font: "Roboto", sans-serif;
 	:-ms-input-placeholder { @content }
 };
 
-
 @import url('https://fonts.googleapis.com/css?family=Roboto:400,500'); // FONT
 @import url('https://necolas.github.io/normalize.css/5.0.0/normalize.css'); // RESET
 
 @import "components/forms"; // FORMS
+@import "components/toastr"; // TOASTS
 
 @include placeholder {
 	color: $light-black !important;
@@ -57,7 +58,6 @@ h1 {
 
 	@media only screen and (min-width: 601px) { width: 85%; }
 	@media only screen and (min-width: 1201px) { width: 72.5%; }
-
 }
 
 .loading {
@@ -71,12 +71,10 @@ h1 {
 	padding: 24px;
 	background-color: #EEE;
 	border-radius: 2px;
+
 	overflow: scroll;
 
-	span {
-		margin: 0;
-		font-family: monospace;
-	}
+	font-family: monospace;
 }
 
 header {
