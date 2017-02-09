@@ -1,13 +1,14 @@
 // DISABLE BUTTTON WHEN NO INPUT
-$(document).ready(function() {
-	$('input').keyup(function() {
-		$('#getThumb').attr('disabled', $('input[required]').toArray().some(function(el) {
-			return el.value.length == 0
+$(document).ready(function () {
+	$('input').keyup(function () {
+		$('#getThumb').attr('disabled', $('input[required]').toArray().some(function (el) {
+			return el.value.length == 0;
 		}));
 	});
 });
 
 var $loading = $('#loading').hide();
+
 $(document)
 	.ajaxStart(function () {
 		$loading.show();
@@ -20,7 +21,7 @@ $(document)
 var subdomain;
 
 // SET BUTTON LISTENER
-document.getElementById('getThumb').addEventListener('click', getThumbnail);
+$(document).getElementById('getThumb').addEventListener('click', getThumbnail);
 
 function getThumbnail() {
 	// GET / SET VALUES FROM INPUT FIELDS
@@ -38,18 +39,19 @@ function getThumbnail() {
 
 	function getThumbnailUrl(hashedId, callback) {
 		$.getJSON(baseUrl + accountUrl + '/medias/' + mediaHashedId + '&format=json&callback=?', callback)
-			.error(function() {
-				alert("Call to Wistia failed, the video ID or account URL may be incorrect. Try again.");
+			.error(function () {
+				console.log('Call to Wistia failed, the video ID or account URL may be incorrect. Try again.');
 			});
 	}
 
 	// PARSE THE JSON FILE FROM WISTIA
 	function parseJSON(json) {
+		var thumbnailURL;
+
 		if ($('#wistiaPlayButton').is(':checked')) {
-			var thumbnailURL = json.thumbnail_url.replace(/\d+x\d+/, width + 'x' + height) + "&image_play_button=true&image_play_button_color=" + buttonColor + "CC"; // CC = 80% Opacity
-		}
-		else {
-			var thumbnailURL = json.thumbnail_url.replace(/\d+x\d+/, width + 'x' + height);
+			thumbnailURL = json.thumbnail_url.replace(/\d+x\d+/, width + 'x' + height) + '&image_play_button=true&image_play_button_color=' + buttonColor + 'CC'; // CC = 80% Opacity
+		} else {
+			thumbnailURL = json.thumbnail_url.replace(/\d+x\d+/, width + 'x' + height);
 		}
 
 		// DISPLAY IMAGE THUMBNAIL
@@ -63,10 +65,11 @@ function getThumbnail() {
 	getThumbnailUrl(mediaHashedId, parseJSON);
 }
 // SAVING THE SUBDOMAIN USED
-window.onbeforeunload = function() {
+$(window).onbeforeunload = function () {
 	localStorage.setItem(subdomain, $('#wistiaSubdomain').val());
 };
-window.onload = function() {
+
+window.onload = function () {
 	var subdomain = localStorage.getItem(subdomain);
 	if (subdomain !== null) {
 		$('#wistiaSubdomain').val(subdomain);
