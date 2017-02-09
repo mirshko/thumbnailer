@@ -18,7 +18,7 @@ pre {
 
 input {
 	&[type="text"], &[type="number"] {
-		width: 240px;
+		width: 256px;
 
 		box-sizing: border-box;
 		padding: 4px 0;
@@ -31,6 +31,10 @@ input {
 
 		&:active,
 		&:focus { border-bottom: 2px solid $off-black; }
+
+		&:not(:required):invalid, &.invalid {
+			border-bottom: 2px solid $error;
+		}
 	}
 
 	&[type="checkbox"] {
@@ -91,6 +95,13 @@ label {
 	display: inline;
 	line-height: 1.5;
 	color: $off-black;
+
+	&.underline {
+		padding: 4px 0;
+		outline: none;
+		border: none;
+		border-bottom: 2px solid $lightest-black;
+	}
 }
 
 button {

@@ -4,8 +4,8 @@ $medium-black: rgba(#000, 0.57);
 $light-black: rgba(#000, 0.38);
 $lightest-black: rgba(#000, 0.12);
 
-$error: #E53935;
-$valid: #43A047;
+$error: #e53935;
+$success: #43a047;
 
 $font: "Roboto", sans-serif;
 
@@ -59,7 +59,6 @@ h1 {
 	@media only screen and (min-width: 1201px) { width: 72.5%; }
 
 }
-
 
 .loading {
 	display: inline-block;
@@ -116,13 +115,6 @@ footer {
 		margin-top: 8px;
 		color: $medium-black;
 	}
-}
-
-.underline {
-	padding: 4px 0;
-	outline: none;
-	border: none;
-	border-bottom: 2px solid $lightest-black;
 }
 
 #wistiaPlayButtonColor {
