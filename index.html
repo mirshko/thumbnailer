@@ -41,7 +41,6 @@
 			<div class="explainer">
 				<div class="explainer-text">
 					<ol>
-						<li>Enter your Wistia account subdomain (<strong>company</strong>.wistia.com)</li>
 						<li>Enter the ID from the Wistia video (...wistia.com/medias/<strong>12345abdce</strong>)</li>
 						<li>Enter the <strong>width</strong> and <strong>height</strong> for the desired thumbnail *</li>
 					</ol>
@@ -55,9 +54,6 @@
 			<h3>Thumbnail Information</h4>
 			<form action="index.html" method="post">
 				<div class="input-field">
-					<input required autofocus id="wistiaSubdomain" class="account-input" type="text" name="wistiaSubdomain" placeholder="Wistia Subdomain"><label for="wistiaSubdomain" class="underline">.wistia.com</label>
-				</div>
-				<div class="input-field">
 					<input required id="wistiaID" type="text" name="wistiaID" placeholder="Wistia ID">
 				</div>
 				<div class="input-field">
@@ -68,8 +64,8 @@
 				</div>
 				<div class="input-field extras">
 					<h3>Extras</h3>
-					<input id="wistiaPlayButtonColor" minlength=6 type="text" name="wistiaPlayButtonColor" placeholder="Button Color">
-					<input id="wistiaPlayButton" type="checkbox" name="wistiaPlayButton"><label for="wistiaPlayButton">Enable Play Button?</label>
+					<input id="wistiaPlayButtonColor" minlength=6 type="text" name="wistiaPlayButtonColor" placeholder="Play Button Color (6 Digit Hex)">
+					<input id="wistiaPlayButton" type="checkbox" name="wistiaPlayButton"><label for="wistiaPlayButton">Enable</label>
 				</div>
 				<button id="getThumb" disabled="true" type="button" name="button">Get Thumbnail</button>
 			</form>

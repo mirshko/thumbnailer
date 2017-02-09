@@ -18,20 +18,14 @@ pre {
 
 input {
 	&[type="text"], &[type="number"] {
-		width: 200px;
-
-		@media only screen and (max-width: 1076px) {
-			width: 100%;
-			max-width: 400px;
-			margin-bottom: 16px;
-		}
+		width: 240px;
 
 		box-sizing: border-box;
 		padding: 4px 0;
 		outline: none;
 		border: none;
 		border-bottom: 2px solid $lightest-black;
-		transition: border-bottom 0.2s ease;
+		transition: border-bottom .2s;
 
 		&.account-input { text-align: right; }
 

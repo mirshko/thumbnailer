@@ -17,11 +17,8 @@ $(document)
 		$loading.hide();
 	});
 
-// NEEDED DUE TO SAVING SOME INPUT
-var subdomain;
-
 // SET BUTTON LISTENER
-$(document).getElementById('getThumb').addEventListener('click', getThumbnail);
+document.getElementById('getThumb').addEventListener('click', getThumbnail);
 
 function getThumbnail() {
 	// GET / SET VALUES FROM INPUT FIELDS
@@ -31,16 +28,11 @@ function getThumbnail() {
 
 	var buttonColor = $('#wistiaPlayButtonColor').val();
 
-	subdomain = $('#wistiaSubdomain').val();
-
 	// BUILD CALL TO WISTIA
-	var baseUrl = 'https://fast.wistia.com/oembed/?url=';
-	var accountUrl = escape('http://' + subdomain + '.wistia.com');
-
 	function getThumbnailUrl(hashedId, callback) {
-		$.getJSON(baseUrl + accountUrl + '/medias/' + mediaHashedId + '&format=json&callback=?', callback)
+		$.getJSON('https://fast.wistia.com/oembed/?url=http://home.wistia.com/medias/' + mediaHashedId + '&format=json&callback=?', callback)
 			.error(function () {
-				console.log('Call to Wistia failed, the video ID or account URL may be incorrect. Try again.');
+				alert('Failure. The video ID or account URL may be incorrect. Try again.');
 			});
 	}
 
@@ -64,14 +56,3 @@ function getThumbnail() {
 	// CALL THE FUNCTIONS TO GET THE ID FROM WISTIA AND THE INPUT FIELD
 	getThumbnailUrl(mediaHashedId, parseJSON);
 }
-// SAVING THE SUBDOMAIN USED
-$(window).onbeforeunload = function () {
-	localStorage.setItem(subdomain, $('#wistiaSubdomain').val());
-};
-
-window.onload = function () {
-	var subdomain = localStorage.getItem(subdomain);
-	if (subdomain !== null) {
-		$('#wistiaSubdomain').val(subdomain);
-	}
-};

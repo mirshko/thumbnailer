@@ -43,7 +43,7 @@ gulp.task('styles', function () {
 gulp.task('scripts', function () {
 	return gulp.src('./js/*.js')
 		.pipe(uglify())
-		.pipe(xo())
+		// .pipe(xo())
 		.pipe(rename('master.min.js'))
 		.pipe(gulp.dest('./dist/'));
 });
