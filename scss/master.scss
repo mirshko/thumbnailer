@@ -1,33 +1,9 @@
-// VARIABLES
-$off-black: #212121;
-$medium-black: rgba(#000, 0.57);
-$light-black: rgba(#000, 0.38);
-$lightest-black: rgba(#000, 0.12);
-
-$error: #e53935;
-$error-dark: #c62828;
-$success: #43a047;
-
-$font: "Roboto", sans-serif;
-
-// MIXINS
-@mixin placeholder {
-	::-webkit-input-placeholder { @content }
-	:-moz-placeholder { @content }
-	::-moz-placeholder { @content }
-	:-ms-input-placeholder { @content }
-};
-
 @import url('https://fonts.googleapis.com/css?family=Roboto:400,500'); // FONT
 @import url('https://necolas.github.io/normalize.css/5.0.0/normalize.css'); // RESET
 
+@import "components/variables-mixins"; // VARIABLES & MIXINS
 @import "components/forms"; // FORMS
 @import "components/toastr"; // TOASTS
-
-@include placeholder {
-	color: $light-black !important;
-	font-family: $font;
-}
 
 h1,
 h2,
@@ -42,8 +18,10 @@ strong {
 html {
 	line-height: 1.5;
 	font-family: $font;
-	font-weight: 400;
+	font-weight: 4500;
 	font-size: 16px;
+
+	// -webkit-font-smoothing: antialiased;
 }
 
 h1 {
@@ -69,7 +47,7 @@ h1 {
 	margin-top: 32px;
 	margin-bottom: 32px;
 	padding: 24px;
-	background-color: #EEE;
+	background-color: $grey-300;
 	border-radius: 2px;
 
 	overflow: scroll;
@@ -96,10 +74,17 @@ footer {
 	}
 
 	a {
-		color: $off-black;
+		color: $primary;
 		text-decoration: none;
 		padding-bottom: 2px;
-		border-bottom: 1px solid $off-black;
+		border-bottom: 2px solid $grey-300;
+
+		&:hover, &:focus {
+			border-bottom: 2px solid $primary;
+			outline: none;
+		}
+
+		transition: border-bottom $duration;
 	}
 }
 
@@ -111,7 +96,7 @@ footer {
 
 	p {
 		margin-top: 8px;
-		color: $medium-black;
+		color: $disabled;
 	}
 }
 

@@ -1,8 +1,12 @@
 button,
 html,
-input,
-pre {
-	color: $off-black;
+input {
+	color: $primary;
+}
+
+@include placeholder {
+	color: $secondary !important;
+	font-family: $font;
 }
 
 .input-field {
@@ -24,16 +28,17 @@ input {
 		padding: 4px 0;
 		outline: none;
 		border: none;
-		border-bottom: 2px solid $lightest-black;
-		transition: border-bottom .2s;
+		border-bottom: 2px solid $grey-300;
+
+		transition: border-bottom $duration;
 
 		&.account-input { text-align: right; }
 
 		&:active,
-		&:focus { border-bottom: 2px solid $off-black; }
+		&:focus { border-bottom: 2px solid $grey-900; }
 
 		&:not(:required):invalid, &.invalid {
-			border-bottom: 2px solid $error;
+			border-bottom: 2px solid $red-600;
 		}
 	}
 
@@ -45,7 +50,7 @@ input {
 		display: none;
 
 		& + label {
-			color: $medium-black;
+			color: $secondary;
 			position: relative;
 
 			padding-left: 28px;
@@ -64,30 +69,46 @@ input {
 				height: 14px;
 				width: 14px;
 
-				border: 2px solid $medium-black;
+				border: 2px solid $grey-900;
 				border-radius: 2px;
 
-				transition: background-color .2s, border .2s, color .2s;
+				transition: background-color $duration, border $duration, color $duration;
 			}
 
-			transition: background-color .2s, border .2s, color .2s;
+			transition: background-color $duration, border $duration, color $duration;
 		}
 
 		&:disabled + label {
-			color: $lightest-black;
+			color: $disabled;
 
-			&:before { border: 2px solid $lightest-black; }
+			&:before { border: 2px solid $grey-300; }
+		}
+
+		&:checked:disabled + label {
+			color: $disabled;
+
+			&:before {
+				border: 2px solid $grey-300;
+				background-color: $grey-300;
+
+				content: '✔';
+				color: $white;
+
+				line-height: 14px;
+				font-size: 12px;
+				text-align: center;
+			}
 		}
 
 		&:checked + label {
-			color: $off-black;
+			color: $grey-900;
 
 			&:before {
-				border: 2px solid $off-black;
-				background-color: $off-black;
+				border: 2px solid $grey-900;
+				background-color: $grey-900;
 
 				content: '✔';
-				color: #fff;
+				color: $white;
 
 				line-height: 14px;
 				font-size: 12px;
@@ -100,26 +121,32 @@ input {
 label {
 	display: inline;
 	line-height: 1.5;
-	color: $off-black;
+	color: $grey-900;
 
 	&.underline {
 		padding: 4px 0;
 		outline: none;
 		border: none;
-		border-bottom: 2px solid $lightest-black;
+		border-bottom: 2px solid $grey-300;
 	}
 }
 
 button {
 	border-radius: 2px;
-	background-color: #DDD;
+	color: $white;
+	background-color: $grey-900;
 	border: none;
 	padding: 8px 16px;
 
-	&:disabled {
-		background-color: #EEE;
-		color: $light-black;
+	&:hover, &:focus {
+		background-color: $grey-800;
+		outline: none;
 	}
 
-	transition: all .2s;
+	&:disabled {
+		color: $disabled;
+		background-color: $grey-300;
+	}
+
+	transition: all $duration;
 }

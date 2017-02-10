@@ -60,7 +60,7 @@ function getThumbnail() {
 	function parseJSON(json) {
 		var thumbnailURL;
 
-		if ($('#wistiaPlayButton').is(':checked')) {
+		if ($('#wistiaPlayButton').is(':checked') && !$('#wistiaPlayButton').is(':disabled') && !$('#wistiaPlayButtonColor').is(':invalid')) {
 			thumbnailURL = json.thumbnail_url.replace(/\d+x\d+/, width + 'x' + height) + '&image_play_button=true&image_play_button_color=' + buttonColor + 'CC'; // CC = 80% Opacity
 		} else {
 			thumbnailURL = json.thumbnail_url.replace(/\d+x\d+/, width + 'x' + height);
