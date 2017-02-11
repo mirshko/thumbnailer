@@ -7,7 +7,6 @@
 	<title>Wistia Thumbnail Generator</title>
 	<meta name="author" content="Jeff Reiner">
 	<meta name="description" content="Helps you get thumbnails from Wistia videos.">
-	<meta name="theme-color" content="#53b9ff">
 	<!-- SITE SPECS -->
 	<meta charset="utf-8">
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -53,19 +52,19 @@
 			<form action="index.html" method="post">
 				<h3>Thumbnail Information</h4>
 				<div class="input-field">
-					<input required id="wistiaID" type="text" name="wistiaID"><label class="form" for="wistiaID">Wistia ID</label>
+					<input required id="wistiaID" type="text" name="wistiaID" placeholder="Wistia ID">
 				</div>
 				<div class="input-field">
-					<input required id="wistiaThumbWidth" type="number" name="wistiaThumbWidth"><label class="form" for="wistiaThumbWidth">Width</label><input id="wistiaThumbRatio" type="checkbox" name="wistiaPlayButton"><label class="m_l-8" for="wistiaThumbRatio">16:10</label>
+					<input required id="wistiaThumbWidth" type="number" name="wistiaThumbWidth" placeholder="Width"><input id="wistiaThumbRatio" type="checkbox" name="wistiaPlayButton"><label for="wistiaThumbRatio">16:10</label>
 				</div>
 				<div class="input-field">
-					<div class="underline disabled-text"><span id="wistiaThumbHeight">Auto</span></div><label class="form">Height</label>
+					<div class="underline secondary-text">Height <span id="wistiaThumbHeight" class="disabled-text">Auto</span></div>
 				</div>
-				<h3>Extras</h3>
-				<div class="input-field">
-					<input id="wistiaPlayButtonColor" minlength="6" maxlength="6" type="text" name="wistiaPlayButtonColor"><label for="wistiaPlayButtonColor" class="form">Play Button Color (Hex)</label><input id="wistiaPlayButton" disabled="true" type="checkbox" name="wistiaPlayButton"><label class="m_l-8" for="wistiaPlayButton">Enable</label>
+				<div class="input-field extras">
+					<h3>Extras</h3>
+					<input id="wistiaPlayButtonColor" minlength="6" maxlength="6" type="text" name="wistiaPlayButtonColor" placeholder="Play Button Color (Hex)"><input id="wistiaPlayButton" disabled="true" type="checkbox" name="wistiaPlayButton"><label for="wistiaPlayButton">Enable</label>
 				</div>
-				<button id="getThumb" disabled="true" type="button" name="button">Get Thumbnail</button>
+				<button id="getThumb" disabled="true" type="button" name="getThumb">Get Thumbnail</button>
 			</form>
 			<!-- THUMBNAIL URL -->
 			<div class="code-block">

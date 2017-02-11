@@ -19,7 +19,6 @@ html {
 	font-family: $font;
 	font-weight: 400;
 	font-size: 16px;
-	// -webkit-font-smoothing: antialiased;
 }
 
 h1 {
@@ -69,11 +68,9 @@ main {
 }
 
 footer {
-	p {
-		margin: 0;
+	margin-bottom: 32px;
 
-		padding-bottom: 32px;
-	}
+	p { margin: 0; }
 
 	a {
 		color: $primary;
@@ -86,6 +83,7 @@ footer {
 			border-bottom: 2px solid $primary;
 			outline: none;
 		}
+
 		transition: border-bottom $duration;
 	}
 }
@@ -102,30 +100,18 @@ footer {
 	}
 }
 
-.m_l-8 {
-	margin-left: 8px;
-}
+.secondary-text { color: $secondary; }
 
-.secondary-text {
-	color: $secondary;
-}
+.primary-text { color: $primary; }
 
-.primary-text {
-	color: $primary;
-}
+.disabled-text { color: $disabled; }
 
-.disabled-text {
-	color: $disabled;
-}
+.hide { display: none !important; }
 
 .responsive-img {
 	display: block;
 	max-width: 100%;
 	height: auto;
-}
-
-.hide {
-	display: none !important;
 }
 
 .underline {
