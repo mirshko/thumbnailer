@@ -1,25 +1,64 @@
-// DISABLE BUTTTON WHEN NO INPUT
-$(document).ready(function() {
-	$('input').keyup(function() {
-		$('#getThumb').attr('disabled', $('input[required]').toArray().some(function(el) {
-			return el.value.length == 0;
-		}));
-	});
-	$('#wistiaPlayButtonColor').keyup(function() {
-		$('#wistiaPlayButton').attr('disabled', $('#wistiaPlayButtonColor').toArray().some(function(el) {
-			return el.value.length == 0;
-		}));
-	});
-});
-
-var $loading = $('#loading').hide();
-
+// TOASTR OPTIONS
 toastr.options = {
 	"newestOnTop": true,
 	"progressBar": true,
 	"extendedTimeOut": "2500"
-}
+};
 
+// KEYUP LISTENERS
+$(document).ready(function() {
+	// MAKE SURE BUTTON IS ONLY ACTIVE WHEN REQUIRED FIELDS ARE GOOD
+	$('input').keyup(function() {
+		$('#getThumb').attr('disabled', $('input[required]').toArray().some(function(el) {
+			return el.value.length === 0;
+		}));
+	});
+
+	// MAKE SURE WISTIA PLAY BUTTON CHECKBOX ISN'T ENABLED BY DEFAULT
+	$('#wistiaPlayButtonColor').keyup(function() {
+		$('#wistiaPlayButton').attr('disabled', $('#wistiaPlayButtonColor').toArray().some(function(el) {
+			return el.value.length === 0;
+		}));
+	});
+});
+
+
+// SET HEIGHT BASED ON WIDTH AND KEEP ASPECT RATIO
+$("#wistiaThumbWidth").keyup(function() {
+	if ($('#wistiaThumbRatio').is(':checked')) {
+		var value = $(this).val();
+		value *= 1;
+
+		window.valueHeight = Math.round((value / 16) * 10);
+	}
+	else {
+		var value = $(this).val();
+		value *= 1;
+
+		window.valueHeight = Math.round((value / 16) * 9);
+	}
+
+	$('#wistiaThumbHeight').text(valueHeight);
+});
+document.getElementById('wistiaThumbRatio').addEventListener('click', function() {
+	var value = $('#wistiaThumbWidth').val();
+	value *= 1;
+
+	window.valueHeight = Math.round((value / 16) * 10);
+
+	if (!$('#wistiaThumbRatio').is(':checked')) {
+		var value = $('#wistiaThumbWidth').val();
+		value *= 1;
+
+		window.valueHeight = Math.round((value / 16) * 9);
+	}
+
+	$('#wistiaThumbHeight').text(valueHeight);
+});
+
+
+// AJAX REQUEST LOADING
+var $loading = $('#loading').hide();
 $(document)
 	.ajaxStart(function() {
 		$loading.show();
@@ -40,7 +79,6 @@ function getThumbnail() {
 	// GET / SET VALUES FROM INPUT FIELDS
 	var mediaHashedId = $('#wistiaID').val();
 	var width = $('#wistiaThumbWidth').val();
-	var height = $('#wistiaThumbHeight').val();
 
 	var buttonColor = $('#wistiaPlayButtonColor').val();
 
@@ -61,9 +99,9 @@ function getThumbnail() {
 		var thumbnailURL;
 
 		if ($('#wistiaPlayButton').is(':checked') && !$('#wistiaPlayButton').is(':disabled') && !$('#wistiaPlayButtonColor').is(':invalid')) {
-			thumbnailURL = json.thumbnail_url.replace(/\d+x\d+/, width + 'x' + height) + '&image_play_button=true&image_play_button_color=' + buttonColor + 'CC'; // CC = 80% Opacity
+			thumbnailURL = json.thumbnail_url.replace(/\d+x\d+/, width + 'x' + window.valueHeight) + '&image_play_button=true&image_play_button_color=' + buttonColor + 'CC'; // CC = 80% Opacity
 		} else {
-			thumbnailURL = json.thumbnail_url.replace(/\d+x\d+/, width + 'x' + height);
+			thumbnailURL = json.thumbnail_url.replace(/\d+x\d+/, width + 'x' + window.valueHeight);
 		}
 
 		// DISPLAY IMAGE THUMBNAIL

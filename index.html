@@ -41,31 +41,29 @@
 				<div class="explainer-text">
 					<ol>
 						<li>Enter the ID from the Wistia video (...wistia.com/medias/<strong>12345abdce</strong>)</li>
-						<li>Enter the <strong>width</strong> and <strong>height</strong> for the desired thumbnail *</li>
+						<li>Enter the desired <strong>width</strong>, and change the aspect ratio if needed (default is 16:9)</li>
 					</ol>
-					<p><i>* Note that the width and height use a crop function, so make sure your height matches the aspect ratio of the video.</i></p>
 				</div>
 			</div>
 		</div>
 	</header>
 	<main>
 		<div class="container">
-			<h3>Thumbnail Information</h4>
 			<!-- FORM -->
 			<form action="index.html" method="post">
+				<h3>Thumbnail Information</h4>
 				<div class="input-field">
-					<input required id="wistiaID" type="text" name="wistiaID" placeholder="Wistia ID">
+					<input required id="wistiaID" type="text" name="wistiaID"><label class="form" for="wistiaID">Wistia ID</label>
 				</div>
 				<div class="input-field">
-					<input required id="wistiaThumbWidth" type="number" name="wistiaThumbWidth" placeholder="Width">
+					<input required id="wistiaThumbWidth" type="number" name="wistiaThumbWidth"><label class="form" for="wistiaThumbWidth">Width</label><input id="wistiaThumbRatio" type="checkbox" name="wistiaPlayButton"><label class="m_l-8" for="wistiaThumbRatio">16:10</label>
 				</div>
 				<div class="input-field">
-					<input required id="wistiaThumbHeight" type="number" name="wistiaThumbHeight" placeholder="Height">
+					<div class="underline disabled-text"><span id="wistiaThumbHeight">Auto</span></div><label class="form">Height</label>
 				</div>
-				<div class="input-field extras">
-					<h3>Extras</h3>
-					<input id="wistiaPlayButtonColor" minlength="6" maxlength="6" type="text" name="wistiaPlayButtonColor" placeholder="Play Button Color (Hex)">
-					<input id="wistiaPlayButton" disabled="true" type="checkbox" name="wistiaPlayButton"><label for="wistiaPlayButton">Enable</label>
+				<h3>Extras</h3>
+				<div class="input-field">
+					<input id="wistiaPlayButtonColor" minlength="6" maxlength="6" type="text" name="wistiaPlayButtonColor"><label for="wistiaPlayButtonColor" class="form">Play Button Color (Hex)</label><input id="wistiaPlayButton" disabled="true" type="checkbox" name="wistiaPlayButton"><label class="m_l-8" for="wistiaPlayButton">Enable</label>
 				</div>
 				<button id="getThumb" disabled="true" type="button" name="button">Get Thumbnail</button>
 			</form>

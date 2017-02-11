@@ -3,42 +3,69 @@ html,
 input {
 	color: $primary;
 }
-
 @include placeholder {
 	color: $secondary !important;
 	font-family: $font;
 }
 
 .input-field {
-	&:not(:first-child) {
-		margin-top: 16px;
-	}
+	margin-top: 20px;
+	padding-bottom: 16px;
 
-	&.extras {
-		margin-top: 32px;
-		margin-bottom: 32px;
-	}
+	position: relative;
+}
+
+form h3 {
+	margin: 0;
+
+	padding-bottom: .5rem;
+}
+
+label.form {
+	position: absolute;
+
+	top: -12px;
+
+	font-size: .8rem;
+	font-weight: 500;
+
+	display: block;
+	line-height: 1;
+	color: $disabled;
+
+	transition: all $duration;
 }
 
 input {
-	&[type="text"], &[type="number"] {
+	&[type="number"],
+	&[type="text"] {
 		width: 256px;
-
 		box-sizing: border-box;
-		padding: 4px 0;
+		padding: 8px 0;
 		outline: none;
 		border: none;
 		border-bottom: 2px solid $grey-300;
-
 		transition: border-bottom $duration;
 
-		&.account-input { text-align: right; }
+		&.account-input {
+			text-align: right;
+		}
 
 		&:active,
-		&:focus { border-bottom: 2px solid $grey-900; }
+		&:focus {
+			border-bottom: 2px solid $grey-900;
+		}
 
-		&:not(:required):invalid, &.invalid {
+		&.invalid,
+		&:not(:required):invalid {
 			border-bottom: 2px solid $red-600;
+		}
+
+		&:active,
+		&:focus + label {
+			color: $primary;
+
+			transition: all $duration;
 		}
 	}
 
@@ -52,11 +79,8 @@ input {
 		& + label {
 			color: $secondary;
 			position: relative;
-
-			padding-left: 28px;
-
+			padding-left: 26px;
 			cursor: pointer;
-
 			height: 20px;
 			line-height: 20px;
 
@@ -65,23 +89,21 @@ input {
 				position: absolute;
 				top: 0;
 				left: 0;
-
 				height: 14px;
 				width: 14px;
-
 				border: 2px solid $grey-900;
 				border-radius: 2px;
-
 				transition: background-color $duration, border $duration, color $duration;
 			}
-
 			transition: background-color $duration, border $duration, color $duration;
 		}
 
 		&:disabled + label {
 			color: $disabled;
 
-			&:before { border: 2px solid $grey-300; }
+			&:before {
+				border: 2px solid $grey-300;
+			}
 		}
 
 		&:checked:disabled + label {
@@ -90,10 +112,8 @@ input {
 			&:before {
 				border: 2px solid $grey-300;
 				background-color: $grey-300;
-
 				content: '✔';
 				color: $white;
-
 				line-height: 14px;
 				font-size: 12px;
 				text-align: center;
@@ -106,28 +126,13 @@ input {
 			&:before {
 				border: 2px solid $grey-900;
 				background-color: $grey-900;
-
 				content: '✔';
 				color: $white;
-
 				line-height: 14px;
 				font-size: 12px;
 				text-align: center;
 			}
 		}
-	}
-}
-
-label {
-	display: inline;
-	line-height: 1.5;
-	color: $grey-900;
-
-	&.underline {
-		padding: 4px 0;
-		outline: none;
-		border: none;
-		border-bottom: 2px solid $grey-300;
 	}
 }
 
@@ -138,7 +143,8 @@ button {
 	border: none;
 	padding: 8px 16px;
 
-	&:hover, &:focus {
+	&:focus,
+	&:hover {
 		background-color: $grey-800;
 		outline: none;
 	}
@@ -147,6 +153,5 @@ button {
 		color: $disabled;
 		background-color: $grey-300;
 	}
-
 	transition: all $duration;
 }
