@@ -12,18 +12,19 @@
 	"devDependencies": {
 		"browser-sync": "^2.18.5",
 		"gulp": "^3.9.1",
-		"gulp-notify": "^3.0.0",
 		"gulp-rename": "^1.2.2",
 		"gulp-sass": "^3.0.0",
 		"gulp-surge": "^0.1.0",
 		"gulp-uglify": "^2.0.1",
 		"gulp-xo": "^0.14.0"
 	},
-	"eslintConfig": {
-		"env": {
-			"browser": true,
-			"jQuery": true
-		}
+	"xo": {
+		"globals": [
+			"$",
+			"document",
+			"window",
+			"toastr"
+		]
 	},
 	"dependencies": {}
 }

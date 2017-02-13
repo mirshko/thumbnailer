@@ -1,96 +1,90 @@
 // TOASTR OPTIONS
 toastr.options = {
-	"newestOnTop": true,
-	"progressBar": true,
-	"extendedTimeOut": "2500"
+	newestOnTop: true,
+	progressBar: true,
+	extendedTimeOut: '2500'
 };
 
-// KEYUP LISTENERS
-$(document).ready(function() {
+// LISTENERS
+$(document).ready(function () {
 	// MAKE SURE BUTTON IS ONLY ACTIVE WHEN REQUIRED FIELDS ARE GOOD
-	$('input').keyup(function() {
-		$('#getThumb').attr('disabled', $('input[required]').toArray().some(function(el) {
+	$('input').keyup(function () {
+		$('#getThumb').attr('disabled', $('input[required]').toArray().some(function (el) {
 			return el.value.length === 0;
 		}));
 	});
 
 	// MAKE SURE WISTIA PLAY BUTTON CHECKBOX ISN'T ENABLED BY DEFAULT
-	$('#wistiaPlayButtonColor').keyup(function() {
-		$('#wistiaPlayButton').attr('disabled', $('#wistiaPlayButtonColor').toArray().some(function(el) {
+	$('#wistiaPlayButtonColor').keyup(function () {
+		$('#wistiaPlayButton').attr('disabled', $('#wistiaPlayButtonColor').toArray().some(function (el) {
 			return el.value.length === 0;
 		}));
 	});
+
+	// RUN calcHeight() FUNCTION WHEN TEXT IS INPUT OR CHECKBOX IS CLICKED
+	$('#wistiaThumbWidth').keyup(calcHeight);
+	$('#wistiaThumbRatio').click(calcHeight);
+
+	// SET BUTTON LISTENER
+	$('#getThumb').click(getThumbnail);
 });
-
-
-// SET HEIGHT BASED ON WIDTH AND KEEP ASPECT RATIO
-$("#wistiaThumbWidth").keyup(function() {
-	if ($('#wistiaThumbRatio').is(':checked')) {
-		var value = $(this).val();
-		value *= 1;
-
-		window.valueHeight = Math.round((value / 16) * 10);
-	}
-	else {
-		var value = $(this).val();
-		value *= 1;
-
-		window.valueHeight = Math.round((value / 16) * 9);
-	}
-
-	$('#wistiaThumbHeight').text(valueHeight);
-});
-document.getElementById('wistiaThumbRatio').addEventListener('click', function() {
-	var value = $('#wistiaThumbWidth').val();
-	value *= 1;
-
-	window.valueHeight = Math.round((value / 16) * 10);
-
-	if (!$('#wistiaThumbRatio').is(':checked')) {
-		var value = $('#wistiaThumbWidth').val();
-		value *= 1;
-
-		window.valueHeight = Math.round((value / 16) * 9);
-	}
-
-	$('#wistiaThumbHeight').text(valueHeight);
-});
-
 
 // AJAX REQUEST LOADING
 var $loading = $('#loading').hide();
 $(document)
-	.ajaxStart(function() {
+	.ajaxStart(function () {
 		$loading.show();
 	})
-	.ajaxStop(function() {
+	.ajaxStop(function () {
 		$loading.hide();
 	});
 
-// SET BUTTON LISTENER
-document.getElementById('getThumb').addEventListener('click', getThumbnail);
+// CALCULATE HEIGHT FOR VIDEO BASED ON ASPECT RATIO
+function calcHeight() {
+	// VARS
+	var value = $('#wistiaThumbWidth').val();
+	// MATHS
+	if ($('#wistiaThumbRatio').is(':checked')) {
+		// CALC FOR 16:10
+		value *= 1;
+		window.valueHeight = Math.round((value / 16) * 10);
+	} else {
+		// CALC FOR 16:9
+		value *= 1;
+		window.valueHeight = Math.round((value / 16) * 9);
+	}
+	// SET HEIGHT TEXT PREVIEW
+	$('#wistiaThumbHeight').text(window.valueHeight);
+}
 
+// POST CALL TO WISTIA AND BUILD THUMBNAIL AND URL
 function getThumbnail() {
+	// JQUERY VARS
+	var id = $('#wistiaID');
+	var button = $('#wistiaPlayButton');
+	var buttoncolor = $('#wistiaPlayButtonColor');
+	var thumbUrl = $('#url');
+	var downloadThumb = $('#downloadThumb');
+
 	// RESET FIELDS
 	$('#dynamic').remove();
-	$('#url').text("Thumbnail URL");
-	$('#downloadThumb').attr('href', "#");
+	thumbUrl.text('Thumbnail URL');
+	downloadThumb.attr('href', '#');
 
 	// GET / SET VALUES FROM INPUT FIELDS
-	var mediaHashedId = $('#wistiaID').val();
+	var mediaHashedId = id.val();
 	var width = $('#wistiaThumbWidth').val();
-
-	var buttonColor = $('#wistiaPlayButtonColor').val();
+	var buttonColor = buttoncolor.val();
 
 	// BUILD CALL TO WISTIA
 	function getThumbnailUrl(hashedId, callback) {
 		$.getJSON('https://fast.wistia.com/oembed/?url=http://home.wistia.com/medias/' + mediaHashedId + '&format=json&callback=?', callback)
-			.fail(function() {
-				$('#wistiaID').addClass("invalid");
+			.fail(function () {
+				id.addClass('invalid');
 				toastr.error('Something went wrong. Try again');
 			})
-			.done(function() {
-				$('#wistiaID').removeClass("invalid");
+			.done(function () {
+				id.removeClass('invalid');
 			});
 	}
 
@@ -98,9 +92,11 @@ function getThumbnail() {
 	function parseJSON(json) {
 		var thumbnailURL;
 
-		if ($('#wistiaPlayButton').is(':checked') && !$('#wistiaPlayButton').is(':disabled') && !$('#wistiaPlayButtonColor').is(':invalid')) {
+		if (button.is(':checked') && !button.is(':disabled') && !buttoncolor.is(':invalid')) {
+			// ADD PLAY BUTTON IN DESIRED COLOR
 			thumbnailURL = json.thumbnail_url.replace(/\d+x\d+/, width + 'x' + window.valueHeight) + '&image_play_button=true&image_play_button_color=' + buttonColor + 'CC'; // CC = 80% Opacity
 		} else {
+			// DISPLAY THUMBNAIL NO PLAY BUTTON
 			thumbnailURL = json.thumbnail_url.replace(/\d+x\d+/, width + 'x' + window.valueHeight);
 		}
 
@@ -108,10 +104,10 @@ function getThumbnail() {
 		var thumb = $('<img id="dynamic" class="responsive-img">');
 
 		thumb.attr('src', thumbnailURL);
-		thumb.appendTo('#downloadThumb');
+		thumb.appendTo(downloadThumb);
 
-		$('#url').text(thumbnailURL);
-		$('#downloadThumb').attr('href', thumbnailURL);
+		thumbUrl.text(thumbnailURL);
+		downloadThumb.attr('href', thumbnailURL);
 	}
 
 	// CALL THE FUNCTIONS TO GET THE ID FROM WISTIA AND THE INPUT FIELD

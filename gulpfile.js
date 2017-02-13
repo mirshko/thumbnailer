@@ -7,7 +7,6 @@ var rename = require('gulp-rename');
 var surge = require('gulp-surge');
 var uglify = require('gulp-uglify');
 var xo = require('gulp-xo');
-var notify = require('gulp-notify');
 
 // BROWSER-SYNC
 gulp.task('browser-sync', function () {
@@ -30,10 +29,7 @@ gulp.task('styles', function () {
 	return gulp.src('./scss/**/*.scss')
 		.pipe(sass({
 			outputStyle: 'compressed'
-		}).on('error', function (err) {
-			notify().write(err);
-			this.emit('end');
-		}))
+		}).on('error', sass.logError))
 		.pipe(rename('master.min.css'))
 		.pipe(gulp.dest('./dist/'))
 		.pipe(browserSync.stream());
@@ -42,8 +38,8 @@ gulp.task('styles', function () {
 // UGLIFY SCRIPTS
 gulp.task('scripts', function () {
 	return gulp.src('./js/*.js')
+		.pipe(xo())
 		.pipe(uglify())
-		// .pipe(xo())
 		.pipe(rename('master.min.js'))
 		.pipe(gulp.dest('./dist/'));
 });
