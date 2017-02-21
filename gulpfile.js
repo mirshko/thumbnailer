@@ -6,7 +6,6 @@ var sass = require('gulp-sass');
 var rename = require('gulp-rename');
 var surge = require('gulp-surge');
 var uglify = require('gulp-uglify');
-var xo = require('gulp-xo');
 
 // BROWSER-SYNC
 gulp.task('browser-sync', function () {
@@ -37,11 +36,11 @@ gulp.task('styles', function () {
 
 // UGLIFY SCRIPTS
 gulp.task('scripts', function () {
-	return gulp.src('./js/*.js')
-		.pipe(xo())
-		.pipe(uglify())
-		.pipe(rename('master.min.js'))
-		.pipe(gulp.dest('./dist/'));
+	return gulp.src('js/**/*.js')
+		.pipe(rename({
+			suffix: '.min'
+		}))
+		.pipe(gulp.dest('dist'));
 });
 
 // DEPLOY TO SURGE.SH

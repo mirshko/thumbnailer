@@ -82,6 +82,7 @@ input {
 			color: $secondary;
 			position: relative;
 			padding-left: 26px;
+			margin-left: 8px;
 			cursor: pointer;
 			height: 20px;
 			line-height: 20px;
@@ -136,11 +137,6 @@ input {
 			}
 		}
 	}
-}
-
-// Space Checkbox From Input Form
-input + input[type="checkbox"] + label {
-	margin-left: 8px;
 }
 
 button {

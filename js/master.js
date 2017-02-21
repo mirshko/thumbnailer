@@ -14,13 +14,6 @@ $(document).ready(function () {
 		}));
 	});
 
-	// MAKE SURE WISTIA PLAY BUTTON CHECKBOX ISN'T ENABLED BY DEFAULT
-	$('#wistiaPlayButtonColor').keyup(function () {
-		$('#wistiaPlayButton').attr('disabled', $('#wistiaPlayButtonColor').toArray().some(function (el) {
-			return el.value.length === 0;
-		}));
-	});
-
 	// RUN calcHeight() FUNCTION WHEN TEXT IS INPUT OR CHECKBOX IS CLICKED
 	$('#wistiaThumbWidth').keyup(calcHeight);
 	$('#wistiaThumbRatio').click(calcHeight);
@@ -93,8 +86,11 @@ function getThumbnail() {
 		var thumbnailURL;
 
 		if (button.is(':checked') && !button.is(':disabled') && !buttoncolor.is(':invalid')) {
+			// PROCESS COLOR
+			buttonColor
+			var fixedButtonColor = buttonColor.replace('#','');
 			// ADD PLAY BUTTON IN DESIRED COLOR
-			thumbnailURL = json.thumbnail_url.replace(/\d+x\d+/, width + 'x' + window.valueHeight) + '&image_play_button=true&image_play_button_color=' + buttonColor + 'CC'; // CC = 80% Opacity
+			thumbnailURL = json.thumbnail_url.replace(/\d+x\d+/, width + 'x' + window.valueHeight) + '&image_play_button=true&image_play_button_color=' + fixedButtonColor + 'CC'; // CC = 80% Opacity
 		} else {
 			// DISPLAY THUMBNAIL NO PLAY BUTTON
 			thumbnailURL = json.thumbnail_url.replace(/\d+x\d+/, width + 'x' + window.valueHeight);
