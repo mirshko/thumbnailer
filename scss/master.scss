@@ -2,8 +2,10 @@
 @import url( 'https://necolas.github.io/normalize.css/5.0.0/normalize.css'); // RESET
 @import "components/variables-mixins"; // VARIABLES & MIXINS
 @import "components/forms"; // FORMS
-@import "components/toastr"; // TOASTS
-@import "components/huebee"; // HUEBEE
+// IMPORTED LIBRARIES
+@import "components/toastr"; // TOASTR @ http://codeseven.github.io/toastr/
+@import "components/huebee"; // HUEBEE @ http://huebee.buzz/
+@import "components/hint"; // HINT @ https://kushagragour.in/lab/hint/
 
 h1,
 h2,
@@ -45,12 +47,14 @@ h1 {
 }
 
 .code-block {
+	display: block;
+	cursor: pointer;
 	margin-top: 32px;
 	margin-bottom: 32px;
 	padding: 24px;
 	background-color: $grey-300;
 	border-radius: 2px;
-	overflow: scroll;
+	word-break: break-all;
 	font-family: monospace;
 }
 

@@ -146,15 +146,18 @@ button {
 	border: none;
 	padding: 8px 16px;
 
+	cursor: pointer;
+
 	&:focus,
 	&:hover {
-		background-color: $grey-800;
 		outline: none;
 	}
 
 	&:disabled {
 		color: $disabled;
 		background-color: $grey-300;
+
+		cursor: default;
 	}
 	transition: all $duration;
 }

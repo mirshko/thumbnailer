@@ -74,7 +74,7 @@ function getThumbnail() {
 		$.getJSON('https://fast.wistia.com/oembed/?url=http://home.wistia.com/medias/' + mediaHashedId + '&format=json&callback=?', callback)
 			.fail(function () {
 				id.addClass('invalid');
-				toastr.error('Something went wrong. Try again');
+				toastr.error('Something went wrong. Try again.');
 			})
 			.done(function () {
 				id.removeClass('invalid');
@@ -84,8 +84,13 @@ function getThumbnail() {
 	// PARSE THE JSON FILE FROM WISTIA
 	function parseJSON(json) {
 		var thumbnailURL;
+		var emptyField = false;
 
-		if (button.is(':checked') && !button.is(':disabled') && !buttoncolor.is(':invalid')) {
+		// Check if color field is empty
+		if($('#wistiaPlayButtonColor').val() === '')
+			emptyField = true;
+
+		if (button.is(':checked') && !buttoncolor.is(':invalid') && !emptyField) {
 			// PROCESS COLOR
 			buttonColor
 			var fixedButtonColor = buttonColor.replace('#','');

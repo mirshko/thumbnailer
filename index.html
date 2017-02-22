@@ -67,7 +67,7 @@
 				<button id="getThumb" disabled="true" type="button" name="getThumb">Get Thumbnail</button>
 			</form>
 			<!-- THUMBNAIL URL -->
-			<div class="code-block">
+			<div data-clipboard-target="#url" class="clipboard code-block hint--left hint--rounded" aria-label="Click to copy.">
 				<span id="url">Thumbnail URL</span>
 			</div>
 			<!-- LOADING SVG -->
@@ -81,9 +81,10 @@
 					to="360 20 20"
 					dur=".75s"
 					repeatCount="indefinite"/>
-				</path></svg>
+				</path>
+			</svg>
 			<!-- DOWNLOAD THUMBNAIL & IMG PREVIEW -->
-			<a id="downloadThumb" download></a>
+			<a id="downloadThumb" class="hint--left hint--rounded" aria-label="Click to download." download></a>
 		</div>
 	</main>
 	<footer>
@@ -95,13 +96,27 @@
 	<!-- JAVASCRIPT -->
 	<script src="https://unpkg.com/jquery@3.1.1/dist/jquery.min.js"></script>
 	<script src="https://unpkg.com/toastr@2.1.2"></script>
+	<script src="https://unpkg.com/clipboard@1.6.0/dist/clipboard.min.js"></script>
 	<script src="https://unpkg.com/huebee@1.0.0/dist/huebee.pkgd.min.js"></script>
 	<script src="dist/master.min.js"></script>
 	<script>
+		var clipboard = new Clipboard('.clipboard');
+		clipboard.on('success', function(e) {
+			e.clearSelection();
+			toastr.success('Copied to clipboard.');
+		});
 		// HUEBEE
 		var hueb = new Huebee ('#wistiaPlayButtonColor', {
 			notation: 'hex',
-			saturations: 2,
+			saturations: 1,
+			customColors: [
+				'#1b5faa',
+				'#90CEF1',
+				'#FFC20E',
+				'#53b9ff',
+				'#0d8ce6',
+				'#363a46'
+			],
 			setBGColor: false
 		});
 		// GOOGLE ANALYTICS

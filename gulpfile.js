@@ -37,6 +37,7 @@ gulp.task('styles', function () {
 // UGLIFY SCRIPTS
 gulp.task('scripts', function () {
 	return gulp.src('js/**/*.js')
+		.pipe(uglify())
 		.pipe(rename({
 			suffix: '.min'
 		}))

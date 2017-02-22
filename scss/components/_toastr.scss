@@ -84,10 +84,18 @@
 
 .toast-success {
 	background-color: $green-600;
+
+	.toast-progress {
+		background-color: $green-800;
+	}
 }
 
 .toast-error {
 	background-color: $red-600;
+
+	.toast-progress {
+		background-color: $red-800;
+	}
 }
 
 .toast-progress {
@@ -95,8 +103,8 @@
 	left: 0;
 	bottom: 0;
 	height: 4px;
-	background-color: $red-800;
 }
+
 /*Responsive Design*/
 @media all and (max-width: 240px) {
 	#toast-container > div {
