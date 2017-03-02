@@ -49,10 +49,6 @@ input {
 		border-bottom: 2px solid $grey-300;
 		transition: border-bottom $duration;
 
-		&.account-input {
-			text-align: right;
-		}
-
 		&:active,
 		&:focus {
 			border-bottom: 2px solid $grey-900;

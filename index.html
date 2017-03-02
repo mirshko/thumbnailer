@@ -39,8 +39,8 @@
 			<div class="explainer">
 				<div class="explainer-text">
 					<ol>
-						<li>Enter the ID from the Wistia video (...wistia.com/medias/<strong>12345abdce</strong>)</li>
-						<li>Enter the desired <strong>width</strong>, and change the aspect ratio if needed (default is 16:9)</li>
+						<li>Enter the URL of the Wistia video e.g. <strong>company.wistia.com/medias/12345abcde</strong></li>
+						<li>Enter desired thumbnail <strong>width</strong>, and change the aspect ratio if needed (default is 16:9)</li>
 					</ol>
 				</div>
 			</div>
@@ -52,7 +52,7 @@
 			<form action="index.html" method="post">
 				<h3>Thumbnail Information</h4>
 				<div class="input-field">
-					<input required id="wistiaID" type="text" name="wistiaID" placeholder="Wistia ID">
+					<input required id="wistiaURL" type="text" name="wistiaURL" placeholder="Video URL">
 				</div>
 				<div class="input-field">
 					<input required id="wistiaThumbWidth" type="number" name="wistiaThumbWidth" placeholder="Width"><input id="wistiaThumbRatio" type="checkbox" name="wistiaPlayButton"><label for="wistiaThumbRatio">16:10</label>

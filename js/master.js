@@ -53,7 +53,7 @@ function calcHeight() {
 // POST CALL TO WISTIA AND BUILD THUMBNAIL AND URL
 function getThumbnail() {
 	// JQUERY VARS
-	var id = $('#wistiaID');
+	var url = $('#wistiaURL');
 	var button = $('#wistiaPlayButton');
 	var buttoncolor = $('#wistiaPlayButtonColor');
 	var thumbUrl = $('#url');
@@ -65,7 +65,7 @@ function getThumbnail() {
 	downloadThumb.attr('href', '#');
 
 	// GET / SET VALUES FROM INPUT FIELDS
-	var mediaHashedId = id.val();
+	var mediaHashedId = url.val().match(/medias\/(\w{10})/)[1];
 	var width = $('#wistiaThumbWidth').val();
 	var buttonColor = buttoncolor.val();
 
@@ -73,11 +73,11 @@ function getThumbnail() {
 	function getThumbnailUrl(hashedId, callback) {
 		$.getJSON('https://fast.wistia.com/oembed/?url=http://home.wistia.com/medias/' + mediaHashedId + '&format=json&callback=?', callback)
 			.fail(function () {
-				id.addClass('invalid');
+				url.addClass('invalid');
 				toastr.error('Something went wrong. Try again.');
 			})
 			.done(function () {
-				id.removeClass('invalid');
+				url.removeClass('invalid');
 			});
 	}
 
