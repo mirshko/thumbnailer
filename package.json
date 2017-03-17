@@ -17,13 +17,5 @@
 		"gulp-surge": "^0.1.0",
 		"gulp-uglify": "^2.0.1"
 	},
-	"xo": {
-		"globals": [
-			"$",
-			"document",
-			"window",
-			"toastr"
-		]
-	},
 	"dependencies": {}
 }

@@ -48,6 +48,6 @@ gulp.task('scripts', function () {
 gulp.task('deploy', [], function () {
 	return surge({
 		project: './',
-		domain: 'thumbnailer.reiner.space'
+		domain: 'thumbnailer.reiner.io'
 	});
 });
