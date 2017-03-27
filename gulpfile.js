@@ -4,7 +4,6 @@ var gulp = require('gulp');
 var browserSync = require('browser-sync').create();
 var sass = require('gulp-sass');
 var rename = require('gulp-rename');
-var surge = require('gulp-surge');
 var uglify = require('gulp-uglify');
 
 // BROWSER-SYNC
@@ -42,12 +41,4 @@ gulp.task('scripts', function () {
 			suffix: '.min'
 		}))
 		.pipe(gulp.dest('dist'));
-});
-
-// DEPLOY TO SURGE.SH
-gulp.task('deploy', [], function () {
-	return surge({
-		project: './',
-		domain: 'thumbnailer.reiner.io'
-	});
 });
