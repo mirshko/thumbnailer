@@ -22,6 +22,9 @@ gulp.task('default', ['styles', 'browser-sync'], function () {
 	gulp.watch('./*.html').on('change', browserSync.reload);
 });
 
+// BUILD
+gulp.task('build', ['styles', 'scripts'], function () {});
+
 // COMPILE SASS
 gulp.task('styles', function () {
 	return gulp.src('./scss/**/*.scss')

@@ -3,33 +3,33 @@
 
 <head>
 	<!-- PAGE -->
-	<meta charset="utf-8">
+	<meta charset="utf-8"/>
 	<title>Wistia Thumbnail Generator</title>
 	<meta name="author" content="Jeff Reiner">
-	<meta name="description" content="Helps you get thumbnails from Wistia videos.">
+	<meta name="description" content="Helps you get thumbnails from Wistia videos."/>
 	<!-- SITE SPECS -->
-	<meta charset="utf-8">
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="utf-8"/>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1"/>
 	<!-- SOCIAL -->
-	<meta property="og:title" content="Wistia Thumbnail Generator">
-	<meta property="og:description" content="Helps you get thumbnails from Wistia videos.">
-	<meta property="og:image" content="/seo_thumb.png">
-	<meta property="og:url" content="https://github.com/mirshko/wistia-thumbnail-generator">
-	<meta name="twitter:title" content="Wistia Thumbnail Generator">
-	<meta name="twitter:description" content="Helps you get thumbnails from Wistia videos.">
-	<meta name="twitter:image" content="/seo_thumb.png">
-	<meta name="twitter:card" content="summary_large_image">
+	<meta property="og:title" content="Wistia Thumbnail Generator"/>
+	<meta property="og:description" content="Helps you get thumbnails from Wistia videos."/>
+	<meta property="og:image" content="/seo_thumb.png"/>
+	<meta property="og:url" content="https://github.com/mirshko/wistia-thumbnail-generator"/>
+	<meta name="twitter:title" content="Wistia Thumbnail Generator"/>
+	<meta name="twitter:description" content="Helps you get thumbnails from Wistia videos."/>
+	<meta name="twitter:image" content="/seo_thumb.png"/>
+	<meta name="twitter:card" content="summary_large_image"/>
 	<!-- CSS -->
-	<link rel="stylesheet" href="dist/master.min.css">
+	<link rel="stylesheet" href="dist/master.min.css"/>
 	<!-- FAVICON -->
-	<link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
-	<link rel="icon" type="image/png" href="favicon/favicon-32x32.png" sizes="32x32">
-	<link rel="icon" type="image/png" href="favicon/favicon-16x16.png" sizes="16x16">
-	<link rel="manifest" href="favicon/manifest.json">
-	<link rel="mask-icon" href="favicon/safari-pinned-tab.svg" color="#53b9ff">
-	<link rel="shortcut icon" href="favicon/favicon.ico">
-	<meta name="msapplication-config" content="favicon/browserconfig.xml">
+	<link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png"/>
+	<link rel="icon" type="image/png" href="favicon/favicon-32x32.png" sizes="32x32"/>
+	<link rel="icon" type="image/png" href="favicon/favicon-16x16.png" sizes="16x16"/>
+	<link rel="manifest" href="favicon/manifest.json"/>
+	<link rel="mask-icon" href="favicon/safari-pinned-tab.svg" color="#53b9ff"/>
+	<link rel="shortcut icon" href="favicon/favicon.ico"/>
+	<meta name="msapplication-config" content="favicon/browserconfig.xml"/>
 </head>
 
 <body>
@@ -64,10 +64,10 @@
 					<h3>Extras</h3>
 					<input id="wistiaPlayButtonColor" pattern="^#?([a-fA-F0-9]{6})$" type="text" name="wistiaPlayButtonColor" placeholder="Play Button Color (Hex)"><input id="wistiaPlayButton" type="checkbox" name="wistiaPlayButton"><label for="wistiaPlayButton">Enable</label>
 				</div>
-				<button id="getThumb" disabled="true" type="button" name="getThumb">Get Thumbnail</button>
+				<button cta-label="Get Thumbnail" id="getThumb" disabled="true" type="button" name="getThumb">Get Thumbnail</button>
 			</form>
 			<!-- THUMBNAIL URL -->
-			<div data-clipboard-target="#url" class="clipboard code-block hint--left hint--rounded" aria-label="Click to copy.">
+			<div data-clipboard-target="#url" cta-label="Thumbnail URL Copied" class="clipboard code-block hint--left hint--rounded" aria-label="Click to copy.">
 				<span id="url">Thumbnail URL</span>
 			</div>
 			<!-- LOADING SVG -->
@@ -84,7 +84,7 @@
 				</path>
 			</svg>
 			<!-- DOWNLOAD THUMBNAIL & IMG PREVIEW -->
-			<a id="downloadThumb" class="hint--left hint--rounded" aria-label="Click to download." download></a>
+			<a id="downloadThumb" cta-label="Thumbnail Downloaded" class="hint--left hint--rounded" aria-label="Click to download." download></a>
 		</div>
 	</main>
 	<footer>
@@ -100,6 +100,7 @@
 	<script src="https://unpkg.com/huebee@1.0.0/dist/huebee.pkgd.min.js"></script>
 	<script src="dist/master.min.js"></script>
 	<script>
+		// CLIPBOARD
 		var clipboard = new Clipboard('.clipboard');
 		clipboard.on('success', function(e) {
 			e.clearSelection();
@@ -126,6 +127,18 @@
 		})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 		ga('create', 'UA-77203242-2', 'auto');
 		ga('send', 'pageview');
+		// PUSH GOOGLE ANALYTICS EVENTS
+		$(document).ready(function () {
+			$('body').on('click', '[cta-label]', function () {
+				var label = this.getAttribute('cta-label') || this.getAttribute('href') || 'button'
+				ga('send', {
+					hitType: 'event',
+					eventCategory: 'Actions',
+					eventAction: 'Completed Action',
+					eventLabel: label
+				});
+			})
+		});
 	</script>
 </body>
 
