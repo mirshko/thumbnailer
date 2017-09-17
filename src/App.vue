@@ -109,7 +109,7 @@
       </form>
 
       <div class="thumbnail-url">
-        <pre><code v-text="previewThumbSrc"></code></pre>
+        <pre v-clipboard="previewThumbSrc"><code v-text="previewThumbSrc"></code></pre>
       </div>
 
       <div class="thumbnail-preview">
@@ -203,6 +203,7 @@ export default {
     margin-top: 40px;
 
     & pre {
+      cursor: pointer;
       border-radius: 3px;
     }
   }

@@ -4,6 +4,7 @@ import Vue from 'vue'
 import App from './App'
 import Axios from 'axios'
 import VeeValidate from 'vee-validate'
+import VueClipboards from 'vue-clipboards'
 
 Vue.config.productionTip = false
 
@@ -18,6 +19,8 @@ const config = {
 }
 
 Vue.use(VeeValidate, config)
+
+Vue.use(VueClipboards)
 
 /* eslint-disable no-new */
 new Vue({
