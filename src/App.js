@@ -3,24 +3,18 @@ import React, { Component } from 'react'
 class App extends Component {
   constructor (props) {
     super(props)
+
     this.state = {
       videoUrl: '',
       videoWidth: '',
       aspectRatio: 9,
-      videoHeight: '',
       buttonColor: '',
-      previewThumbSrc: 'Thumbnail URL',
-      editedThumbSrc: ''
+      previewThumbSrc: '',
+      loading: false,
+      error: false
     }
 
     this.handleInputChange = this.handleInputChange.bind(this)
-  }
-
-  handleVideoHeight () {
-    this.setState(
-      { videoHeight: this.state.videoHeight },
-      () => { this.state.videoHeight = Math.round((this.state.videoWidth / 16) * this.state.aspectRatio) }
-    )
   }
 
   handleInputChange (event) {
@@ -33,31 +27,47 @@ class App extends Component {
     })
   }
 
-  handleThumbnail (response) {
-    this.state.previewThumbSrc = response
-  }
-
   handleSubmit = (e) => {
     e.preventDefault()
+    this.setState({
+      error: false,
+      loading: true,
+      previewThumbSrc: '' // Reset visible thumbnail
+    })
 
-    let mediaId = this.state.videoUrl.match(/medias\/(\w{10})/)
+    const mediaId = this.state.videoUrl.match(/medias\/(\w{10})/)[1]
+    const videoWidth = this.state.videoWidth
+    const videoHeight = Math.round((this.state.videoWidth / 16) * this.state.aspectRatio)
 
     fetch(`https://fast.wistia.com/oembed/?url=http://home.wistia.com/medias/${mediaId}&format=json&callback=?`)
       .then(res => res.json())
       .then(
         (result) => {
           this.setState({
-            previewThumbSrc: result.thumbnail_url
+            loading: false,
+            previewThumbSrc: videoWidth ? result.thumbnail_url.replace(/\d+x\d+/, `${videoWidth}x${videoHeight}`) : result.thumbnail_url
           })
-        }, (error) => {
+        },
+        (error) => {
           this.setState({
-            error
+            loading: false,
+            error: true
           })
         }
       )
   }
 
   render () {
+    const {
+      videoWidth,
+      aspectRatio,
+      previewThumbSrc,
+      loading,
+      error
+    } = this.state
+
+    const videoHeight = Math.round((videoWidth / 16) * aspectRatio)
+
     return (
       <div className='container grid-lg'>
         <header>
@@ -65,9 +75,9 @@ class App extends Component {
             <h1>Wistia Thumbnail Generator</h1>
             <div>
               <ol>
-                <li>Enter the <strong>URL</strong> of the Wistia video e.g. <i>https://account.wistia.com/medias/...</i></li>
+                <li>Enter the <strong>URL</strong> of the Wistia video e.g. <i>https://<strong>my-account</strong>.wistia.com/medias/...</i></li>
                 <li>Enter desired thumbnail <strong>Width</strong>, and change the <strong>Aspect Ratio</strong> if needed (default is <i>16:9</i>)</li>
-                <li>If desired; add a <strong>Color</strong> <i>(In hex format)</i> for the Wistia Play Button for the thumbnail</li>
+                {/* <li>If desired; add a <strong>Color</strong> <i>(In hex format)</i> for the Wistia Play Button for the thumbnail</li> */}
               </ol>
             </div>
           </div>
@@ -86,8 +96,10 @@ class App extends Component {
                       className='form-input'
                       name='videoUrl'
                       id='videoUrl'
+                      type="url"
                       value={this.state.videoUrl}
                       onChange={this.handleInputChange}
+                      required
                       placeholder='https://account.wistia.com/medias/...'
                     />
                   </div>
@@ -101,9 +113,11 @@ class App extends Component {
                             className="form-input"
                             name='videoWidth'
                             id="videoWidth"
+                            type="number"
                             value={this.state.videoWidth}
-                            onChange={this.handleInputChange, this.handleVideoHeight}
+                            onChange={this.handleInputChange}
                             placeholder='1280'
+                            min='32'
                           />
                         </div>
                       </div>
@@ -129,9 +143,7 @@ class App extends Component {
                           <label className="form-label" for="videoHeight">Video Height</label>
                           <input
                             className="form-input"
-                            name='videoHeight'
-                            id='videoHeight'
-                            value={this.state.videoHeight}
+                            value={videoHeight || 'Automatic'}
                             placeholder='Automatic'
                             disabled
                           />
@@ -140,7 +152,7 @@ class App extends Component {
                     </div>
                   </div>
 
-                  <div className="form-group">
+                  {/* <div className="form-group">
                     <label className="form-label" for="buttonColor">Play Button Color</label>
                     <input
                       className="form-input"
@@ -152,26 +164,42 @@ class App extends Component {
                       placeholder='#fafafa'
                       pattern='#[0-9A-Fa-f]{6}\b'
                     />
-                  </div>
+                  </div> */}
 
                   <div className='form-group' style={{marginTop: '.8rem'}}>
-                    <input className='btn btn-primary' type='submit' value='Submit'/>
+                    <input className={loading ? 'btn btn-primary loading' : 'btn btn-primary'} type='submit' value='Get Thumbnail'/>
                   </div>
+
+                  {error && (
+                    <div style={{
+                      position: 'fixed',
+                      top: '24px',
+                      right: '24px',
+                      width: 'inherit',
+                      padding: '.3rem .6rem'
+                    }} class="toast toast-error">
+                      Something went wrong!
+                    </div>
+                  )}
                 </form>
               </div>
             </div>
 
-            <div style={{marginTop: '3rem'}}>
-              <pre><code style={{
-                padding: '12px 16px'
-              }}>{this.state.previewThumbSrc}</code></pre>
-            </div>
+            { previewThumbSrc && (
+              <div>
+                <div style={{marginTop: '3rem'}}>
+                  <pre><code style={{
+                    padding: '12px 16px'
+                  }}>{previewThumbSrc}</code></pre>
+                </div>
 
-            <div style={{marginTop: '3rem'}}>
-              <a href={this.state.previewThumbSrc} style={{boxShadow: 'none'}} download>
-                <img src={this.state.previewThumbSrc} />
-              </a>
-            </div>
+                <div style={{marginTop: '3rem'}}>
+                  <a href={previewThumbSrc} style={{boxShadow: 'none'}} download>
+                    <img style={{maxWidth: '100%'}} src={previewThumbSrc} />
+                  </a>
+                </div>
+              </div>
+            )}
           </div>
         </main>
 
