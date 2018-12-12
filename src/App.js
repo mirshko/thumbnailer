@@ -1,4 +1,7 @@
-import React, { Component, Fragment } from "react";
+import React, { Component } from "react";
+
+import Corner from "./components/Corner";
+import Intro from "./components/Intro";
 
 class App extends Component {
   constructor(props) {
@@ -38,7 +41,7 @@ class App extends Component {
     const mediaId = this.state.videoUrl.match(/medias\/(\w{10})/)[1];
     const videoWidth = this.state.videoWidth;
     const videoHeight = Math.round(
-      this.state.videoWidth / 16 * this.state.aspectRatio
+      (this.state.videoWidth / 16) * this.state.aspectRatio
     );
 
     fetch(
@@ -75,25 +78,13 @@ class App extends Component {
       error
     } = this.state;
 
-    const videoHeight = Math.round(videoWidth / 16 * aspectRatio);
+    const videoHeight = Math.round((videoWidth / 16) * aspectRatio);
 
     return (
-      <Fragment>
-        <header>
-          <h1>Wistia Thumbnail Generator</h1>
-          <ol>
-            <li>
-              Enter the <strong>URL</strong> of the Wistia video e.g.{" "}
-              <i>
-                https://<strong>my-account</strong>.wistia.com/medias/...
-              </i>
-            </li>
-            <li>
-              Enter desired thumbnail <strong>Width</strong>, and change the{" "}
-              <strong>Aspect Ratio</strong> if needed (default is <i>16:9</i>)
-            </li>
-          </ol>
-        </header>
+      <>
+        <Corner />
+
+        <Intro />
 
         <main>
           <h3>Thumbnail Information</h3>
@@ -155,7 +146,7 @@ class App extends Component {
               </label>
             </div>
 
-            <div>
+            <div style={{ marginTop: "1rem" }}>
               <input
                 type="submit"
                 value={!loading ? "Get Thumbnail" : "Loading"}
@@ -166,7 +157,7 @@ class App extends Component {
           </form>
 
           {previewThumbSrc && (
-            <Fragment>
+            <>
               <div>
                 <pre>
                   <code>{previewThumbSrc}</code>
@@ -178,21 +169,10 @@ class App extends Component {
                   <img alt="Wistia Thumbnail" src={previewThumbSrc} />
                 </a>
               </div>
-            </Fragment>
+            </>
           )}
         </main>
-
-        <footer>
-          <p>
-            A thing by <a href="https://www.reiner.io">Jeff Reiner</a>, check
-            out the{" "}
-            <a href="https://github.com/mirshko/thumbnailer.reiner.io">
-              source code
-            </a>{" "}
-            on GitHub
-          </p>
-        </footer>
-      </Fragment>
+      </>
     );
   }
 }
